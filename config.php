@@ -8,11 +8,20 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Database Configuration
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'anopcharik_patra');
+// Environment detection for Database Credentials
+if ($_SERVER['HTTP_HOST'] === 'localhost' || $_SERVER['HTTP_HOST'] === '127.0.0.1') {
+    // Localhost Credentials
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'root');
+    define('DB_PASS', '');
+    define('DB_NAME', 'anopcharik_patra');
+} else {
+    // Live Server Credentials
+    define('DB_HOST', 'localhost'); // Usually localhost even on live servers, update if needed
+    define('DB_USER', 'u823814640_Rkmehta123123');
+    define('DB_PASS', '|t7I$cw3&');
+    define('DB_NAME', 'u823814640_Rkmehta123123');
+}
 define('DB_CHARSET', 'utf8mb4');
 
 // API Keys removed
