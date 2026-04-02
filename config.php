@@ -9,26 +9,29 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Environment detection for Database Credentials
-if ($_SERVER['HTTP_HOST'] === 'localhost' || $_SERVER['HTTP_HOST'] === '127.0.0.1') {
+if (php_sapi_name() === 'cli' || (isset($_SERVER['HTTP_HOST']) && ($_SERVER['HTTP_HOST'] === 'localhost' || $_SERVER['HTTP_HOST'] === '127.0.0.1'))) {
     // Localhost Credentials
     define('DB_HOST', 'localhost');
     define('DB_USER', 'root');
     define('DB_PASS', '');
+
+    // --- Content Quality Cut ---
+    define('MAX_HIGH_QUALITY_ID', 4440);
+    // ---------------------------
+
     define('DB_NAME', 'anopcharik_patra');
 } else {
     // Live Server Credentials
-    define('DB_HOST', 'localhost'); // Usually localhost even on live servers, update if needed
+    define('DB_HOST', 'localhost'); 
     define('DB_USER', 'u823814640_Rkmehta123123');
     define('DB_PASS', '|t7I$cw3&');
     define('DB_NAME', 'u823814640_Rkmehta123123');
 }
 define('DB_CHARSET', 'utf8mb4');
 
-// API Keys removed
-
-// Define your live site URL (Always use HTTPS in production)
+// Define your live site URL
 define('BASE_URL', 'https://anopcharikpatratopics.in'); 
-define('IS_LOCAL', false); // Set to true only during local development
+define('IS_LOCAL', false); 
 
 // Site Constants
 define('SITE_NAME', 'Anopcharik Patra Topics - अनौपचारिक पत्र विषय');
@@ -37,62 +40,50 @@ define('SITE_DESC', 'Anopcharik Patra Topics - CBSE और ICSE बोर्ड 
 
 // Database Connection
 try {
-    $pdo = new PDO(
-        "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4",
-        DB_USER,
-        DB_PASS,
-        [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES => false
-        ]
-    );
+    if (!isset($pdo)) {
+        $pdo = new PDO(
+            "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4",
+            DB_USER,
+            DB_PASS,
+            [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES => false
+            ]
+        );
+    }
 } catch (PDOException $e) {
-    die("Database connection failed. Please run db_schema.sql first.");
+    if (php_sapi_name() !== 'cli') {
+        die("Database connection failed. Please check config.inc.php");
+    }
 }
 
-// Helper function to get full URL
-function url($path = '')
-{
-    $base = rtrim(BASE_URL, '/');
-    if (empty($path)) {
-        return $base . '/';
+// Helper function to get full URL (Wrapped to prevent redeclaration)
+if (!function_exists('url')) {
+    function url($path = '')
+    {
+        $domain = rtrim(BASE_URL, '/');
+        $path = ltrim($path, '/');
+        if (empty($path)) return $domain . '/';
+        
+        // Handle fragments and queries
+        return $domain . '/' . $path . (strpos($path, '#') === false && strpos($path, '?') === false ? '/' : '');
     }
-
-    // Separate fragment (#) and query (?) if present before encoding path
-    $fragment = '';
-    if (($pos = strpos($path, '#')) !== false) {
-        $fragment = substr($path, $pos);
-        $path = substr($path, 0, $pos);
-    }
-
-    $query = '';
-    if (($pos = strpos($path, '?')) !== false) {
-        $query = substr($path, $pos);
-        $path = substr($path, 0, $pos);
-    }
-    
-    // Encode path segments to handle spaces, but keep slashes
-    $segments = explode('/', ltrim($path, '/'));
-    $encoded_segments = array_map('rawurlencode', $segments);
-    
-    $final_path = implode('/', $encoded_segments);
-    if (!empty($final_path) || strpos($path, '/') === 0) {
-        $final_path = '/' . $final_path;
-    }
-
-    return $base . '/' . ltrim($final_path, '/') . $query . $fragment;
 }
 
 // Helper function to get post URL
-function post_url($slug)
-{
-    return url($slug . '/');
+if (!function_exists('post_url')) {
+    function post_url($slug)
+    {
+        return url($slug);
+    }
 }
 
 // Helper function to get category URL  
-function category_url($slug)
-{
-    return url('category/' . $slug . '/');
+if (!function_exists('category_url')) {
+    function category_url($slug)
+    {
+        return url('category/' . $slug);
+    }
 }
 ?>

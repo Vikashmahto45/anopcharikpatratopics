@@ -13,8 +13,8 @@ $sitemap_live_domain = 'https://anopcharikpatratopics.in';
 // Set XML content type
 header('Content-Type: application/xml; charset=utf-8');
 
-// Get all posts
-$posts = get_all_posts($pdo);
+// Get all posts (Limited to High-Quality range)
+$posts = get_all_posts($pdo, MAX_HIGH_QUALITY_ID);
 $categories = get_all_categories($pdo);
 
 // Start XML

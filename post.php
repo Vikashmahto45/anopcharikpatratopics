@@ -7,6 +7,21 @@
 require_once 'config.php';
 require_once 'includes/functions.php';
 
+// --- Quality Gate ---
+// Check post ID using slug
+$check_sql = "SELECT id FROM posts WHERE slug = :slug";
+$check_stmt = $pdo->prepare($check_sql);
+$check_stmt->execute(['slug' => $_GET['slug'] ?? '']);
+$p_id = $check_stmt->fetchColumn();
+
+// If ID > 4440 or not found, 301 redirect to homepage to protect AdSense
+if (!$p_id || $p_id > 4440) {
+    header("HTTP/1.1 301 Moved Permanently");
+    header("Location: " . url());
+    exit;
+}
+// --------------------
+
 // Get slug from URL
 $slug = isset($_GET['slug']) ? trim($_GET['slug']) : '';
 

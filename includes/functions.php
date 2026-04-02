@@ -8,7 +8,7 @@
  */
 function get_all_posts($pdo, $limit = null)
 {
-    $sql = "SELECT * FROM posts ORDER BY created_at DESC";
+    $sql = "SELECT * FROM posts WHERE id <= " . MAX_HIGH_QUALITY_ID . " ORDER BY created_at DESC";
     if ($limit) {
         $sql .= " LIMIT " . (int) $limit;
     }
@@ -31,7 +31,7 @@ function get_post_by_slug($pdo, $slug)
  */
 function get_posts_by_category($pdo, $category)
 {
-    $stmt = $pdo->prepare("SELECT * FROM posts WHERE category = ? ORDER BY created_at DESC");
+    $stmt = $pdo->prepare("SELECT * FROM posts WHERE category = ? AND id <= " . MAX_HIGH_QUALITY_ID . " ORDER BY created_at DESC");
     $stmt->execute([$category]);
     return $stmt->fetchAll();
 }
@@ -171,21 +171,26 @@ function get_related_posts($pdo, $category, $current_slug, $limit = 4)
 
 // Functions removed to avoid redeclaration
 /**
- * Get paginated posts
+ * Get paginated posts (High-Quality range only)
  */
 function get_paginated_posts($pdo, $category_filter = null, $page = 1, $per_page = 50)
 {
     $offset = ($page - 1) * $per_page;
-    $sql = "SELECT * FROM posts";
+    $sql = "SELECT * FROM posts WHERE id <= " . MAX_HIGH_QUALITY_ID;
     $params = [];
 
     if ($category_filter) {
-        $sql .= " WHERE category " . (is_array($category_filter) ? "IN (" . implode(',', array_fill(0, count($category_filter), '?')) . ")" : "= ?");
-        $params = is_array($category_filter) ? $category_filter : [$category_filter];
+        if (is_array($category_filter)) {
+            $sql .= " AND category IN (" . implode(',', array_fill(0, count($category_filter), '?')) . ")";
+            $params = $category_filter;
+        } else {
+            $sql .= " AND category = ?";
+            $params = [$category_filter];
+        }
     } else {
         // Exclude letter categories if getting 'others'
         $letter_cats = ['father-mother', 'friends', 'siblings', 'congratulatory', 'hindi-writing'];
-        $sql .= " WHERE category NOT IN (" . implode(',', array_fill(0, count($letter_cats), '?')) . ")";
+        $sql .= " AND category NOT IN (" . implode(',', array_fill(0, count($letter_cats), '?')) . ")";
         $params = $letter_cats;
     }
 
@@ -197,19 +202,24 @@ function get_paginated_posts($pdo, $category_filter = null, $page = 1, $per_page
 }
 
 /**
- * Get total post count for pagination
+ * Get total post count for pagination (High-Quality range only)
  */
 function get_total_posts_count($pdo, $category_filter = null)
 {
-    $sql = "SELECT COUNT(*) FROM posts";
+    $sql = "SELECT COUNT(*) FROM posts WHERE id <= " . MAX_HIGH_QUALITY_ID;
     $params = [];
 
     if ($category_filter) {
-        $sql .= " WHERE category " . (is_array($category_filter) ? "IN (" . implode(',', array_fill(0, count($category_filter), '?')) . ")" : "= ?");
-        $params = is_array($category_filter) ? $category_filter : [$category_filter];
+        if (is_array($category_filter)) {
+            $sql .= " AND category IN (" . implode(',', array_fill(0, count($category_filter), '?')) . ")";
+            $params = $category_filter;
+        } else {
+            $sql .= " AND category = ?";
+            $params = [$category_filter];
+        }
     } else {
         $letter_cats = ['father-mother', 'friends', 'siblings', 'congratulatory', 'hindi-writing'];
-        $sql .= " WHERE category NOT IN (" . implode(',', array_fill(0, count($letter_cats), '?')) . ")";
+        $sql .= " AND category NOT IN (" . implode(',', array_fill(0, count($letter_cats), '?')) . ")";
         $params = $letter_cats;
     }
 
