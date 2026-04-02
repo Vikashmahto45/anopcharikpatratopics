@@ -8,30 +8,26 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Environment detection for Database Credentials
+// Environment detection for Database Credentials and URLs
 if (php_sapi_name() === 'cli' || (isset($_SERVER['HTTP_HOST']) && ($_SERVER['HTTP_HOST'] === 'localhost' || $_SERVER['HTTP_HOST'] === '127.0.0.1'))) {
     // Localhost Credentials
     define('DB_HOST', 'localhost');
     define('DB_USER', 'root');
     define('DB_PASS', '');
-
-    // --- Content Quality Cut ---
-    define('MAX_HIGH_QUALITY_ID', 4440);
-    // ---------------------------
-
     define('DB_NAME', 'anopcharik_patra');
+    define('BASE_URL', 'http://localhost/anopcharik%20patra%20topics'); 
+    define('IS_LOCAL', true);
 } else {
     // Live Server Credentials
     define('DB_HOST', 'localhost'); 
     define('DB_USER', 'u823814640_Rkmehta123123');
     define('DB_PASS', '|t7I$cw3&');
     define('DB_NAME', 'u823814640_Rkmehta123123');
+    define('BASE_URL', 'https://anopcharikpatratopics.in'); 
+    define('IS_LOCAL', false);
 }
 define('DB_CHARSET', 'utf8mb4');
-
-// Define your live site URL
-define('BASE_URL', 'https://anopcharikpatratopics.in'); 
-define('IS_LOCAL', false); 
+define('MAX_HIGH_QUALITY_ID', 4440);
 
 // Site Constants
 define('SITE_NAME', 'Anopcharik Patra Topics - अनौपचारिक पत्र विषय');
@@ -66,8 +62,16 @@ if (!function_exists('url')) {
         $path = ltrim($path, '/');
         if (empty($path)) return $domain . '/';
         
-        // Handle fragments and queries
-        return $domain . '/' . $path . (strpos($path, '#') === false && strpos($path, '?') === false ? '/' : '');
+        // Remove trailing slash if it's a file (has an extension)
+        $hasExtension = preg_match('/\.[a-z0-9]{2,4}$/i', $path);
+        $hasQueryOrFragment = (strpos($path, '#') !== false || strpos($path, '?') !== false);
+        
+        $suffix = '';
+        if (!$hasExtension && !$hasQueryOrFragment) {
+            $suffix = '/';
+        }
+        
+        return $domain . '/' . $path . $suffix;
     }
 }
 
