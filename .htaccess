@@ -5,7 +5,7 @@ RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-RewriteBase /
+RewriteBase "/anopcharik patra topics/"
 
 # Link map: /link -> links.php 
 RewriteRule ^link$ links.php [L,QSA]
@@ -32,7 +32,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([a-z0-9-]+)/?$ post.php?slug=$1 [L,QSA]
 
 # Custom error pages (Relative to current directory)
-ErrorDocument 404 /404.php
+ErrorDocument 404 404.php
 
 # Security Headers
 <IfModule mod_headers.c>

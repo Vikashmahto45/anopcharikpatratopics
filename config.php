@@ -15,7 +15,7 @@ if (php_sapi_name() === 'cli' || (isset($_SERVER['HTTP_HOST']) && ($_SERVER['HTT
     define('DB_USER', 'root');
     define('DB_PASS', '');
     define('DB_NAME', 'anopcharik_patra');
-    define('BASE_URL', 'http://localhost/anopcharik%20patra%20topics'); 
+    define('BASE_URL', 'https://localhost/anopcharik%20patra%20topics'); 
     define('IS_LOCAL', true);
 } else {
     // Live Server Credentials
