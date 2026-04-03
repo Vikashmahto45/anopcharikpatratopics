@@ -54,18 +54,23 @@ try {
  * Fetch SEO Data for the current physically requested page.
  */
 function get_seo_data($pdo, $filename) {
-    $stmt = $pdo->prepare("SELECT meta_title, meta_description, meta_keywords FROM seo_pages WHERE page_filename = ? LIMIT 1");
-    $stmt->execute([$filename]);
-    $data = $stmt->fetch();
-    
-    // Fallbacks if not yet in DB
-    if (!$data) {
-        return [
-            'meta_title' => 'Anopcharik Patra Topics - अनौपचारिक पत्र विषय',
-            'meta_description' => 'Comprehensive guide and 1,000+ word detailed examples on writing informal letters in Hindi and English.',
-            'meta_keywords' => 'anopcharik patra topics, hindi letter writing, informal letter format'
-        ];
+    try {
+        $stmt = $pdo->prepare("SELECT meta_title, meta_description, meta_keywords FROM seo_pages WHERE page_filename = ? LIMIT 1");
+        $stmt->execute([$filename]);
+        $data = $stmt->fetch();
+        
+        if ($data) {
+            return $data;
+        }
+    } catch (PDOException $e) {
+        // Log error internally if needed, but return fallback below to keep site running
     }
-    return $data;
+    
+    // Fallbacks if not yet in DB or if table is missing 
+    return [
+        'meta_title' => 'Anopcharik Patra Topics - अनौपचारिक पत्र विषय',
+        'meta_description' => 'Comprehensive guide and 1,000+ word detailed examples on writing informal letters in Hindi and English.',
+        'meta_keywords' => 'anopcharik patra topics, hindi letter writing, informal letter format'
+    ];
 }
 ?>
