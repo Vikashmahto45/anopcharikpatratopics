@@ -1,802 +1,364 @@
 <?php
 /**
- * Homepage - Anopcharik Patra Topics
- * SEO-optimized landing page with format guide and topic grid
+ * index.php (Premium Homepage Redesign)
  */
-
-require_once 'config.php';
-require_once 'includes/functions.php';
-
-// Page Meta
-$page_title = 'अनौपचारिक पत्र के उदाहरण | Informal Letter in Hindi | Anopcharik Patra Topics';
-$page_desc = 'Anopcharik Patra Topics - CBSE और ICSE बोर्ड परीक्षाओं के लिए हिंदी में अनौपचारिक पत्र लेखन के 100+ विषय, प्रारूप और उदाहरण। पिता, माता, मित्र, भाई-बहन को पत्र कैसे लिखें।';
-$page_keywords = 'anopcharik patra topics, अनौपचारिक पत्र विषय, anopcharik patra, informal letter hindi, patra lekhan, anopcharik patra format, anopcharik patra lekhan, class 10 letter writing, CBSE letter format, ICSE patra lekhan, hindi letter writing, पत्र लेखन';
-
-include 'includes/header.php';
-
-// Get all posts and categories
-$categories = get_all_categories($pdo);
-
-// Pagination Configuration
-$page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
-$per_page = 20;
-
-// Get posts and guarantee we have enough "letters" for the hero section
-// We specifically look for "पत्र" or "Letter" in the title to ensure relevance to "Anopcharik Patra"
-$stmt = $pdo->query("SELECT * FROM posts WHERE (title LIKE '%पत्र%' OR title LIKE '%Letter%') ORDER BY created_at DESC LIMIT 50");
-$hero_letters = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-// Get paginated posts for the main content areas
-$letter_cats_array = ['father-mother', 'friends', 'siblings', 'congratulatory', 'hindi-writing'];
-$letters = get_paginated_posts($pdo, $letter_cats_array, $page, $per_page);
-$total_letters = get_total_posts_count($pdo, $letter_cats_array);
-$total_pages = ceil($total_letters / $per_page);
-
-$others = get_paginated_posts($pdo, null, $page, $per_page); 
-
+require_once __DIR__ . '/includes/header.php';
 ?>
 
-<!-- Hero Section -->
-<section class="hero-section">
-    <div class="container hero-container">
-        <div class="hero-grid">
-            <!-- Left: Introduction & Features -->
-            <div class="hero-text">
-                <h1>Anopcharik Patra Topics | 8 अनौपचारिक पत्र के उदाहरण | 8 Informal Letter</h1>                <p class="hero-description">
-                    Anopcharik Patra Topics - CBSE और ICSE बोर्ड परीक्षाओं के लिए सबसे विस्तृत और सरल मार्गदर्शिका। 
-                    100+ अनौपचारिक पत्र विषयों के साथ उदाहरण, प्रारूप, और परीक्षा टिप्स।
-                </p>
-                
-                <ul class="hero-features">
-                    <?php 
-                    // Select a few different topics for the features list (starting from index 4 to avoid duplication)
-                    $feature_topics = array_slice($hero_letters, 4, 4);
-                    foreach($feature_topics as $topic): 
-                    ?>
-                    <li>
-                        <a href="<?php echo post_url($topic['slug']); ?>" title="<?php echo htmlspecialchars($topic['title']); ?>" style="display: flex; align-items: center; gap: 10px; width: 100%; text-decoration: none; color: inherit;">
-                            <span class="feature-icon">✉️</span>
-                            <span class="feature-text"><?php echo htmlspecialchars($topic['title']); ?></span>
-                        </a>
-                    </li>
-                    <?php endforeach; ?>
-                </ul>
-                
-                <div class="hero-buttons">
-                    <a href="#latest-letters" title="नवीनतम पत्र देखें" class="hero-btn primary">Browse Letters</a>
-                    <a href="#format" title="पत्र का प्रारूप सीखें" class="hero-btn secondary">Learn Format</a>
+<style>
+/* Homepage Specific Premium Styles */
+.hero-redesign {
+    background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand-primary) 100%);
+    padding: 100px 20px;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+.hero-redesign::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: var(--surface);
+    transform: skewY(-2deg);
+    z-index: 1;
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.hero-title-main {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+.hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+.cta-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.cta-btn-primary {
+    background: white;
+    color: var(--brand-dark);
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.cta-btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+}
+.cta-btn-outline {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: 2px solid white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+.cta-btn-outline:hover {
+    background: white;
+    color: var(--brand-dark);
+}
+
+/* Features Section */
+.features-section {
+    padding: 80px 20px;
+    background: var(--surface);
+    position: relative;
+    z-index: 2;
+}
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.feature-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--brand-primary);
+}
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--brand-light);
+    color: var(--brand-dark);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.feature-icon svg { width: 30px; height: 30px; }
+
+/* Keyword Keyword Grid */
+.keyword-section {
+    padding: 80px 20px;
+    background: white;
+}
+.keyword-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.keyword-tag {
+    background: var(--surface);
+    color: var(--brand-dark);
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+.keyword-tag:hover {
+    background: var(--brand-primary);
+    color: white;
+    border-color: var(--brand-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.2);
+}
+
+/* SEO Content Block */
+.seo-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    align-items: center;
+}
+@media(max-width: 768px) {
+    .seo-content-grid { grid-template-columns: 1fr; }
+    .hero-title-main { font-size: 2.5rem; }
+}
+.content-box h3 { color: var(--brand-dark); font-size: 2rem; margin-bottom: 20px; }
+.content-box p { font-size: 1.1rem; line-height: 1.8; color: var(--text-light); margin-bottom: 20px; }
+
+</style>
+
+<!-- HERO SECTION -->
+<section class="hero-redesign">
+    <div class="hero-content">
+        <h1 class="hero-title-main">Master the Art of Anopcharik Patra Topics</h1>
+        <p class="hero-subtitle">The definitive, highest-quality educational resource for CBSE, ICSE, and State Board Hindi grammar. We provide 34 deeply researched, 1000+ word execution guides to guarantee perfect marks in the writing section.</p>
+        <div class="cta-group">
+            <a href="<?php echo url('best-anopcharik-patra-in-hindi.php'); ?>" class="cta-btn-primary">View the #1 Best Letter</a>
+            <a href="#topics" class="cta-btn-outline">Explore All 34 Topics</a>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES SECTION -->
+<section class="features-section">
+    <div class="container">
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
+                <h3>100% Board Compliant</h3>
+                <p style="color: var(--text-light); margin-top: 15px;">Every format follows the strict left-aligned (Block Layout) mandated by current CBSE & State educational bodies.</p>
             </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                </div>
+                <h3>1,000+ Word Deep Dives</h3>
+                <p style="color: var(--text-light); margin-top: 15px;">No superficial examples. We analyze vocabulary, emotional tones, and 'Matra' accuracy to ensure profound understanding.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                </div>
+                <h3>34 Targeted Keyword Guides</h3>
+                <p style="color: var(--text-light); margin-top: 15px;">From writing to your bank manager to understanding Marathi structural translations, we cover every possible search intent.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SEO CONTENT BLOCK -->
+<section style="background: var(--surface);">
+    <div class="seo-content-grid">
+        <div class="content-box">
+            <h3>Why is 'anopcharik patra lekhan' so Important?</h3>
+            <p><strong>anopcharik patra lekhan</strong> (Informal Letter Writing) is the true test of a student's linguistic intimacy. Unlike formal correspondence, these letters require the writer to navigate complex Indian hierarchical structures—shifting from supreme reverence (Poojniya) for elders to authoritative affection (Anuj) for younger siblings.</p>
+            <p>Our platform breaks down everything from the basic <em>class 5 hindi anopcharik patra topic</em> to the highly philosophical demands of an <em>anopcharik patra class 12</em> board exam. Whether you are searching for pure <em>hindi me anopcharik patra</em> translations or need <em>10 anopcharik patra in hindi for class 9</em>, we have built a structured roadmap for your success.</p>
+            <a href="<?php echo url('anopcharik-patra-lekhan-kise-kahate-hain.php'); ?>" style="color: var(--brand-primary); font-weight: bold; text-decoration: none; border-bottom: 2px solid var(--brand-primary);">Read the Academic Definition &rarr;</a>
+        </div>
+        <div class="content-box" style="background: white; padding: 40px; border-radius: var(--radius-lg); box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid var(--brand-light);">
+            <h4 style="color: var(--brand-dark); font-size: 1.25rem; margin-bottom: 15px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">The Golden Left-Aligned Format</h4>
+            <div style="font-family: monospace; font-size: 0.95rem; color: #475569; line-height: 1.8;">
+                <strong>प्रेषक का पता</strong> (Sender Address)<br>
+                <em>शहर का नाम</em><br><br>
+                <strong>दिनांक</strong> (Date)<br><br>
+                <strong>संबोधन</strong> (Salutation),<br>
+                <strong>अभिवादन</strong> (Greeting)।<br><br>
+                <em>[अनुच्छेद 1: कुशल-मंगल]</em><br>
+                <em>[अनुच्छेद 2: मुख्य विषयवस्तु]</em><br>
+                <em>[अनुच्छेद 3: समापन]</em><br><br>
+                <strong>प्रेषक का संबंध</strong> (Relation)<br>
+                <strong>नाम</strong> (Name)
+            </div>
+            <div style="margin-top: 20px;">
+                <a href="<?php echo url('what-is-the-format-of-anopcharik-patra-in-hindi.php'); ?>" style="display: block; text-align: center; background: var(--brand-dark); color: white; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: bold;">Master The Format Guide</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- LIVE EXAMPLE SECTION -->
+<section style="padding: 80px 20px; background: white;">
+    <div class="container" style="max-width: 900px; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="font-size: 2.5rem; color: var(--brand-dark);">Live Example: A Perfect Anopcharik Patra</h2>
+            <p style="font-size: 1.1rem; color: var(--text-light); margin-top: 15px;">Observe how the completely left-aligned format and emotional vocabulary are executed flawlessly to secure 5/5 marks in a board examination.</p>
+        </div>
+
+        <div class="letter-box" style="box-shadow: 0 10px 40px rgba(0,0,0,0.08); border-top: 5px solid var(--brand-primary); font-size: 1.15rem; background: #fff;">
+            <strong>प्रश्न:</strong> अपने मित्र को राज्य स्तरीय वाद-विवाद प्रतियोगिता (Debate Competition) में प्रथम आने पर बधाई देते हुए एक पत्र लिखिए।<br><br>
+
+            फ्लैट नं. ४५, राजेंद्र नगर,<br>
+            नई दिल्ली - ११००६०<br><br>
+
+            दिनांक: २० अगस्त २०२६<br><br>
+
+            प्रिय मित्र आयुष,<br>
+            सप्रेम नमस्ते।<br><br>
+
+            मैं यहाँ सकुशल हूँ और आशा करता हूँ कि तुम भी सपरिवार आनंदपूर्वक होगे। आज सुबह समाचार पत्र में तुम्हारी तस्वीर और राज्य स्तरीय वाद-विवाद प्रतियोगिता में तुम्हारे प्रथम आने का समाचार पढ़ा। मित्र, यह शुभ समाचार पढ़कर मेरी प्रसन्नता का कोई ठिकाना न रहा। इस ऐतिहासिक सफलता पर तुम्हें मेरी ओर से बहुत-बहुत हार्दिक बधाई!<br><br>
+
+            मुझे हमेशा से तुम्हारी तार्किक क्षमता और भाषा पर तुम्हारी पकड़ पर पूरा विश्वास था। आज तुमने पूरे राज्य में अपने माता-पिता और विद्यालय का नाम रोशन कर दिया है। यह तुम्हारी निरंतर मेहनत का ही परिणाम है। ईश्वर करे तुम इसी प्रकार जीवन में सफलता के नए शिखर छूते रहो।<br><br>
+
+            अंकल और आंटी जी को मेरी ओर से बधाई और सादर प्रणाम कहना। जब मैं अगले महीने तुमसे मिलूँगा, तो हम शानदार पार्टी करेंगे।<br><br>
+
+            तुम्हारा अभिन्न मित्र,<br>
+            रोहित
+        </div>
+    </div>
+</section>
+
+<!-- ADDITIONAL EDUCATIONAL CONTENT -->
+<section style="padding: 80px 20px; background: var(--surface);">
+    <div class="container" style="max-width: 1100px; margin: 0 auto; text-align: center;">
+        <h3 style="font-size: 2.2rem; color: var(--brand-dark); margin-bottom: 40px;">Mastering the Board Exam: Top 3 Fatal Mistakes</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; text-align: left;">
+            <div style="background: white; padding: 30px; border-radius: var(--radius-md); border-left: 5px solid #ef4444; box-shadow: 0 4px 6px rgba(0,0,0,0.02)">
+                <h4 style="color: #ef4444; font-size: 1.25rem; margin-bottom: 12px; font-weight: 700;">1. Adding a 'Vishay' (Subject)</h4>
+                <p style="color: var(--text-light); font-size: 1.05rem; line-height: 1.6;">Never write a subject line in an informal relationship. This is exclusively a formal letter rule. Including it here results in an instant 0 for formatting.</p>
+            </div>
+            <div style="background: white; padding: 30px; border-radius: var(--radius-md); border-left: 5px solid #f59e0b; box-shadow: 0 4px 6px rgba(0,0,0,0.02)">
+                <h4 style="color: #f59e0b; font-size: 1.25rem; margin-bottom: 12px; font-weight: 700;">2. Slanted / Indented Layouts</h4>
+                <p style="color: var(--text-light); font-size: 1.05rem; line-height: 1.6;">The signature and date are no longer written on the right side of the page. Every single line and paragraph start MUST hit the absolute left margin.</p>
+            </div>
+            <div style="background: white; padding: 30px; border-radius: var(--radius-md); border-left: 5px solid #10b981; box-shadow: 0 4px 6px rgba(0,0,0,0.02)">
+                <h4 style="color: #10b981; font-size: 1.25rem; margin-bottom: 12px; font-weight: 700;">3. Misspelling 'Poojniya'</h4>
+                <p style="color: var(--text-light); font-size: 1.05rem; line-height: 1.6;">When addressing elders, completely spell out <strong>पूजनीय</strong>. Writing 'Pujyaniya' (पुज्यनीय) is a severe grammatical matra error heavily penalized by examiners.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- THE MASSIVE KEYWORD TOPIC INDEX -->
+<section id="topics" class="keyword-section">
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h2 style="font-size: 2.5rem; color: var(--brand-dark); margin-bottom: 15px;">The Ultimate Topic Library</h2>
+            <p style="color: var(--text-light); max-width: 600px; margin: 0 auto; font-size: 1.1rem;">Select any of the 34 meticulously researched guides below. Each link leads to a dedicated 1,000+ word masterclass on that exact topic.</p>
+        </div>
+        
+        <div class="keyword-grid">
+            <a href="<?php echo url('anopcharik-patra.php'); ?>" class="keyword-tag">anopcharik patra</a>
+            <a href="<?php echo url('anopcharik-patra-format.php'); ?>" class="keyword-tag">anopcharik patra format</a>
+            <a href="<?php echo url('anopcharik-patra-in-hindi.php'); ?>" class="keyword-tag">anopcharik patra in hindi</a>
+            <a href="<?php echo url('what-is-the-format-of-anopcharik-patra-in-hindi.php'); ?>" class="keyword-tag">what is the format of anopcharik patra in hindi</a>
+            <a href="<?php echo url('anopcharik-patra-lekhan.php'); ?>" class="keyword-tag">anopcharik patra lekhan</a>
+            <a href="<?php echo url('anopcharik-patra-example.php'); ?>" class="keyword-tag">anopcharik patra example</a>
+            <a href="<?php echo url('aupcharik-aur-anopcharik-patra.php'); ?>" class="keyword-tag">aupcharik aur anopcharik patra</a>
+            <a href="<?php echo url('anopcharik-patra-class-10th.php'); ?>" class="keyword-tag">anopcharik patra class 10th</a>
+            <a href="<?php echo url('anopcharik-patra-class-9.php'); ?>" class="keyword-tag">anopcharik patra class 9</a>
+            <a href="<?php echo url('anopcharik-patra-ka-prarup.php'); ?>" class="keyword-tag">anopcharik patra ka prarup</a>
             
-            <!-- Right: Popular Topics Grid -->
-            <div class="hero-topics-card">
-                <h3>🔥 सबसे लोकप्रिय विषय</h3>
-                <div class="popular-topics-grid">
-                    <?php 
-                    // Get popular letter topics
-                    $popular_topics = array_slice($hero_letters, 0, 4);
-                    foreach($popular_topics as $topic): 
-                    ?>
-                    <a href="<?php echo post_url($topic['slug']); ?>" title="<?php echo htmlspecialchars($topic['title']); ?>" class="topic-box">
-                        <span class="topic-emoji">✉️</span>
-                        <span class="topic-title"><?php echo htmlspecialchars($topic['title']); ?></span>
-                        <span class="topic-arrow">→</span>
-                    </a>
-                    <?php endforeach; ?>
-                </div>
-                <a href="#latest-letters" title="सभी विषय देखें" class="view-all-link">View All Topics →</a>
-            </div>
+            <a href="<?php echo url('short-anopcharik-patra.php'); ?>" class="keyword-tag">short anopcharik patra</a>
+            <a href="<?php echo url('5-anopcharik-patra-in-hindi.php'); ?>" class="keyword-tag">5 anopcharik patra in hindi</a>
+            <a href="<?php echo url('3-anopcharik-patra-in-hindi.php'); ?>" class="keyword-tag">3 anopcharik patra in hindi</a>
+            <a href="<?php echo url('2-anopcharik-patra-in-hindi.php'); ?>" class="keyword-tag">2 anopcharik patra in hindi</a>
+            <a href="<?php echo url('anopcharik-patra-to-friend.php'); ?>" class="keyword-tag">anopcharik patra to friend</a>
+            <a href="<?php echo url('apne-mummy-ko-anopcharik-patra.php'); ?>" class="keyword-tag">apne mummy ko anopcharik patra</a>
+            <a href="<?php echo url('anopcharik-patra-topics-in-hindi.php'); ?>" class="keyword-tag">anopcharik patra topics in hindi</a>
+            <a href="<?php echo url('anopcharik-patra-bank-manager-ko.php'); ?>" class="keyword-tag">anopcharik patra bank manager ko kaise likhen</a>
+            <a href="<?php echo url('anopcharik-patra-bus-conductor.php'); ?>" class="keyword-tag">anopcharik patra topics in hindi for bus conductor</a>
+            <a href="<?php echo url('kachra-prabandhan-par-anopcharik-patra.php'); ?>" class="keyword-tag">kachra pravandhan par anopcharik patra</a>
+
+            <a href="<?php echo url('anopcharik-patra-madhur-smrutiya.php'); ?>" class="keyword-tag">anopcharik patra madhur smrutiya</a>
+            <a href="<?php echo url('class-5-hindi-anopcharik-patra-topic.php'); ?>" class="keyword-tag">class 5 hindi anopcharik patra topic</a>
+            <a href="<?php echo url('anopcharik-patra-wikipedia.php'); ?>" class="keyword-tag">anopcharik patra wikipedia</a>
+            <a href="<?php echo url('do-anopcharik-patra.php'); ?>" class="keyword-tag">do anopcharik patra</a>
+            <a href="<?php echo url('hindi-me-anopcharik-patra.php'); ?>" class="keyword-tag">hindi me anopcharik patra</a>
+            <a href="<?php echo url('anopcharik-patra-hindi.php'); ?>" class="keyword-tag">anopcharik patra hindi</a>
+            <a href="<?php echo url('anopcharik-patra-questions.php'); ?>" class="keyword-tag">anopcharik patra questions</a>
+            <a href="<?php echo url('anopcharik-patra-format-class-9.php'); ?>" class="keyword-tag">anopcharik patra format class 9</a>
+            <a href="<?php echo url('anopcharik-patra-in-sanskrit.php'); ?>" class="keyword-tag">anopcharik patra in sanskrit</a>
+            <a href="<?php echo url('anopcharik-patra-in-marathi.php'); ?>" class="keyword-tag">anopcharik patra in marathi</a>
+
+            <a href="<?php echo url('best-anopcharik-patra-in-hindi.php'); ?>" class="keyword-tag">best anopcharik patra in hindi</a>
+            <a href="<?php echo url('10-anopcharik-patra-in-hindi-for-class-9.php'); ?>" class="keyword-tag">10 anopcharik patra in hindi for class 9</a>
+            <a href="<?php echo url('anopcharik-patra-lekhan-kise-kahate-hain.php'); ?>" class="keyword-tag">anopcharik patra lekhan kise kahate hain</a>
+            <a href="<?php echo url('anopcharik-patra-class-12.php'); ?>" class="keyword-tag">anopcharik patra class 12</a>
         </div>
     </div>
 </section>
 
-<style>
-    .hero-section {
-        background: linear-gradient(135deg, var(--color-navy) 0%, #1a252f 100%);
-        color: white;
-        padding: 30px 0;
-        border-bottom: 5px solid var(--color-gold);
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .hero-section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 50%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.03);
-        clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
-    }
-
-    .hero-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 1;
-    }
-
-    .hero-grid {
-        display: grid;
-        grid-template-columns: 1.2fr 1fr;
-        gap: 60px;
-        align-items: center;
-    }
-
-    .hero-text h1 {
-        font-size: 2.2rem;
-        margin-bottom: 8px;
-        color: white;
-        line-height: 1.2;
-        font-weight: 700;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.3rem;
-        color: var(--color-gold);
-        margin-bottom: 20px;
-        font-weight: 500;
-    }
-    
-    .hero-description {
-        font-size: 0.95rem;
-        line-height: 1.5;
-        opacity: 0.95;
-        margin-bottom: 15px;
-    }
-
-    .hero-features {
-        list-style: none;
-        padding: 0;
-        margin-bottom: 15px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .hero-features li {
-        font-size: 0.95rem;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        background: rgba(255, 255, 255, 0.1);
-        padding: 8px 14px;
-        border-radius: 8px;
-        backdrop-filter: blur(5px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        transition: all 0.3s;
-    }
-    
-    .hero-features li:hover {
-        transform: translateX(5px);
-        background: rgba(255, 255, 255, 0.15);
-    }
-
-    .feature-icon {
-        font-size: 1.5rem;
-        flex-shrink: 0;
-    }
-
-    .feature-text {
-        font-weight: 500;
-        letter-spacing: 0.3px;
-    }
-    
-    .hero-buttons {
-        display: flex;
-        gap: 15px;
-        flex-wrap: wrap;
-    }
-
-    .hero-btn {
-        display: inline-block;
-        padding: 14px 30px;
-        font-weight: 600;
-        text-decoration: none;
-        border-radius: 8px;
-        transition: all 0.3s;
-        font-size: 1.05rem;
-    }
-
-    .hero-btn.primary {
-        background: var(--color-gold);
-        color: var(--color-navy);
-        box-shadow: 0 4px 0 #d4a017;
-    }
-    
-    .hero-btn.primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 0 #d4a017;
-    }
-
-    .hero-btn.primary:active {
-        transform: translateY(2px);
-        box-shadow: 0 2px 0 #d4a017;
-    }
-
-    .hero-btn.secondary {
-        background: transparent;
-        border: 2px solid white;
-        color: white;
-    }
-
-    .hero-btn.secondary:hover {
-        background: white;
-        color: var(--color-navy);
-    }
-    
-    /* Right Side: Topics Card */
-    .hero-topics-card {
-        background: white;
-        padding: 20px;
-        border-radius: 16px;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        color: var(--color-navy);
-    }
-
-    .hero-topics-card h3 {
-        margin-top: 0;
-        margin-bottom: 15px;
-        color: var(--color-navy);
-        font-size: 1.2rem;
-        border-bottom: 2px solid #eee;
-        padding-bottom: 10px;
-    }
-    
-    .popular-topics-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 8px;
-        margin-bottom: 12px;
-    }
-    
-    .topic-box {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 10px 12px;
-        background: #f8f9fa;
-        border-radius: 8px;
-        text-decoration: none;
-        transition: all 0.3s;
-        border: 2px solid transparent;
-    }
-    
-    .topic-box:hover {
-        background: #fff;
-        border-color: var(--color-gold);
-        transform: translateX(5px);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    
-    .topic-emoji {
-        font-size: 1.5rem;
-        flex-shrink: 0;
-    }
-    
-    .topic-title {
-        flex: 1;
-        font-size: 0.95rem;
-        color: var(--color-navy);
-        font-weight: 500;
-        line-height: 1.4;
-    }
-    
-    .topic-arrow {
-        color: var(--color-saffron);
-        font-weight: bold;
-        font-size: 1.2rem;
-        opacity: 0;
-        transition: opacity 0.3s;
-    }
-    
-    .topic-box:hover .topic-arrow {
-        opacity: 1;
-    }
-    
-    .view-all-link {
-        display: block;
-        text-align: center;
-        color: var(--color-saffron);
-        font-weight: 600;
-        text-decoration: none;
-        padding: 10px;
-        border-radius: 6px;
-        transition: all 0.3s;
-    }
-    
-    .view-all-link:hover {
-        background: #f8f9fa;
-    }
-
-    @media (max-width: 768px) {
-        .hero-features {
-            display: none !important;
-        }
-        
-        .hero-grid {
-            grid-template-columns: 1fr;
-            gap: 40px;
-        }
-        
-        .hero-text {
-            text-align: center;
-        }
-        
-        .hero-text h1 {
-            font-size: 2.2rem;
-        }
-        
-        .hero-buttons {
-            justify-content: center;
+<!-- SEO CONTENT ENGINE (Dynamically pulled from keyword.txt, visually hidden from users but active for crawlers) -->
+<div style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;">
+    <?php
+    $keyword_file = __DIR__ . '/keyword.txt';
+    if(file_exists($keyword_file)){
+        $keywords = file($keyword_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        foreach ($keywords as $kw) {
+            echo '<p>' . htmlspecialchars(trim($kw)) . '</p>';
         }
     }
-</style>
+    ?>
+</div>
 
-<!-- Main Content Section with Sidebar -->
-<section class="section main-content-section" id="about">
-    <div class="container">
-        <!-- Split Layout -->
-        <div class="split-layout">
-
-            <!-- Left Content -->
-            <div class="left-content">
-                <!-- Latest Letters Preview -->
-                <div class="content-block" id="latest-letters">
-                    <h2 class="block-title">
-                        <span class="title-icon">🆕</span>
-                        नवीनतम पत्र (Latest Letters)
-                    </h2>
-                    <div class="letters-grid">
-                        <?php 
-                        foreach($letters as $post): 
-                        ?>
-                        <a href="<?php echo post_url($post['slug']); ?>" title="<?php echo htmlspecialchars($post['title']); ?>" class="letter-preview-card">
-                            <div class="letter-icon">✉️</div>
-                            <div class="letter-info">
-                                <h4><?php echo htmlspecialchars($post['title']); ?></h4>
-                                <span class="read-more">Read Letter →</span>
-                            </div>
-                        </a>
-                        <?php endforeach; ?>
-                    </div>
-                    <?php echo generate_pagination($page, $total_pages, url()); ?>
-                </div>
-
-                <style>
-                .letters-grid {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-                    gap: 15px;
-                    margin-top: 20px;
-                }
-                .letter-preview-card {
-                    display: flex;
-                    align-items: center;
-                    gap: 15px;
-                    background: #fff;
-                    border: 1px solid #eee;
-                    padding: 15px;
-                    border-radius: 8px;
-                    text-decoration: none;
-                    transition: all 0.2s;
-                    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-                }
-                .letter-preview-card:hover {
-                    border-color: var(--color-gold);
-                    transform: translateY(-3px);
-                    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-                }
-                .letter-icon {
-                    font-size: 2rem;
-                    background: #f0f7ff;
-                    width: 50px;
-                    height: 50px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    border-radius: 50%;
-                }
-                .letter-info h4 {
-                    margin: 0 0 5px;
-                    font-size: 1rem;
-                    color: var(--color-navy);
-                }
-                .read-more {
-                    font-size: 0.8rem;
-                    color: var(--color-saffron);
-                    font-weight: bold;
-                }
-                </style>
-
-                <!-- Introduction Content -->
-                <div class="content-block intro-block">
-                    <h2 class="block-title">
-                        <span class="title-icon">📜</span>
-                        अनौपचारिक पत्र क्या है?
-                    </h2>
-
-                    <div class="intro-text">
-                        <p>
-                            <strong>अनौपचारिक पत्र (Informal Letter)</strong> वह पत्र है जो हम अपने परिवार के सदस्यों,
-                            मित्रों, रिश्तेदारों और परिचितों को लिखते हैं। इसे व्यक्तिगत पत्र या निजी पत्र भी कहा जाता
-                            है।
-                        </p>
-                        <p>
-                            CBSE और ICSE बोर्ड की कक्षा 10 और 12 की हिंदी परीक्षाओं में <strong>पत्र लेखन (Patra
-                                Lekhan)</strong> एक महत्वपूर्ण भाग है। सही प्रारूप और भाषा का उपयोग करने से आप इसमें
-                            पूरे अंक प्राप्त कर सकते हैं।
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Format Section -->
-                <div class="content-block" id="format">
-                    <h2 class="block-title">
-                        <span class="title-icon">✍️</span>
-                        अनौपचारिक पत्र का प्रारूप
-                    </h2>
-                    <p class="english-subtitle">The 7 Parts of an Informal Letter</p>
-
-                    <div class="format-list">
-                        <div class="format-item">
-                            <span class="format-num">1</span>
-                            <div class="format-info">
-                                <h4>भेजने वाले का पता</h4>
-                                <p>पत्र के दाहिने कोने में अपना पूरा पता लिखें।</p>
-                            </div>
-                        </div>
-                        <div class="format-item">
-                            <span class="format-num">2</span>
-                            <div class="format-info">
-                                <h4>दिनांक (Date)</h4>
-                                <p>पते के नीचे पत्र लिखने की तिथि लिखें।</p>
-                            </div>
-                        </div>
-                        <div class="format-item">
-                            <span class="format-num">3</span>
-                            <div class="format-info">
-                                <h4>संबोधन (Salutation)</h4>
-                                <p>पूज्य पिताजी, प्रिय मित्र, आदरणीय माताजी</p>
-                            </div>
-                        </div>
-                        <div class="format-item">
-                            <span class="format-num">4</span>
-                            <div class="format-info">
-                                <h4>अभिवादन (Greeting)</h4>
-                                <p>सादर प्रणाम, नमस्कार, स्नेहिल नमस्ते</p>
-                            </div>
-                        </div>
-                        <div class="format-item">
-                            <span class="format-num">5</span>
-                            <div class="format-info">
-                                <h4>मुख्य भाग (Body)</h4>
-                                <p>पत्र का मुख्य विषय 2-3 अनुच्छेदों में लिखें।</p>
-                            </div>
-                        </div>
-                        <div class="format-item">
-                            <span class="format-num">6</span>
-                            <div class="format-info">
-                                <h4>समापन (Closing)</h4>
-                                <p>शेष कुशल है, आपके पत्र की प्रतीक्षा में</p>
-                            </div>
-                        </div>
-                        <div class="format-item">
-                            <span class="format-num">7</span>
-                            <div class="format-info">
-                                <h4>हस्ताक्षर (Signature)</h4>
-                                <p>आपका आज्ञाकारी पुत्र/पुत्री, आपका मित्र</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <!-- FAQ Section -->
-                <div class="content-block" id="faq">
-                    <h2 class="block-title">
-                        <span class="title-icon">❓</span>
-                        अक्सर पूछे जाने वाले प्रश्न
-                    </h2>
-
-                    <div class="faq-list">
-                        <div class="faq-item">
-                            <div class="faq-question">अनौपचारिक पत्र और औपचारिक पत्र में क्या अंतर है?</div>
-                            <div class="faq-answer">
-                                <p>अनौपचारिक पत्र परिवार और मित्रों को लिखे जाते हैं जबकि औपचारिक पत्र सरकारी कार्यालयों
-                                    को। अनौपचारिक पत्र में भाषा आत्मीय होती है।</p>
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-question">बड़ों को पत्र में संबोधन कैसे करें?</div>
-                            <div class="faq-answer">
-                                <p>"पूज्य", "आदरणीय", "माननीय" जैसे शब्दों का प्रयोग करें। जैसे: पूज्य पिताजी, आदरणीय
-                                    माताजी।</p>
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-question">परीक्षा में पूर्ण अंक कैसे प्राप्त करें?</div>
-                            <div class="faq-answer">
-                                <p>सही प्रारूप का पालन करें, उचित संबोधन लिखें, विषय से संबंधित सामग्री लिखें, भाषा
-                                    शुद्ध रखें।</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Sidebar - Scrolling Topic Cards -->
-            <div class="right-sidebar">
-                <div class="sidebar-header">
-                    <h3>📚 महत्वपूर्ण पत्र विषय</h3>
-                    <p>Select a Letter Topic to Read</p>
-                </div>
-
-                <div class="topic-cards-container">
-
-                    <!-- Letters Section -->
-                    <div class="section-divider" style="padding: 10px 5px; color: var(--color-navy); font-weight: bold; border-bottom: 2px solid var(--color-gold);">
-                        ✉️ अनौपचारिक पत्र (Letters)
-                    </div>
-                    <?php foreach ($hero_letters as $post): ?>
-                        <a href="<?php echo post_url($post['slug']); ?>" title="<?php echo htmlspecialchars($post['title']); ?>" class="mini-topic-card">
-                            <h4><?php echo htmlspecialchars($post['title']); ?></h4>
-                            <span class="card-arrow">→</span>
-                        </a>
-                    <?php endforeach; ?>
-
-                    <!-- Others Section -->
-                     <div class="section-divider" style="padding: 10px 5px; margin-top: 15px; color: var(--color-navy); font-weight: bold; border-bottom: 2px solid var(--color-gold);">
-                        📚 अध्ययन सामग्री (Other Topics)
-                    </div>
-                    <?php foreach ($others as $post): ?>
-                        <a href="<?php echo post_url($post['slug']); ?>" title="<?php echo htmlspecialchars($post['title']); ?>" class="mini-topic-card">
-                            <h4><?php echo htmlspecialchars($post['title']); ?></h4>
-                            <span class="card-arrow">→</span>
-                        </a>
-                    <?php endforeach; ?>
-                </div>
-
-                <div class="sidebar-help">
-                    <h4>Need Help?</h4>
-                    <p>Can't find your topic? Check all categories.</p>
-                </div>
-
-                <!-- Category Quick Links -->
-                <div class="category-quick-links">
-                    <?php foreach ($categories as $cat): ?>
-                        <a href="<?php echo category_url($cat['slug']); ?>" title="<?php echo htmlspecialchars($cat['name']); ?> के सभी पत्र" class="category-pill">
-                            <?php echo $cat['name']; ?>
-                        </a>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<!-- SEO Image Gallery Section -->
-<section class="section image-gallery-section" id="gallery">
-    <div class="container">
-        <h2 style="text-align:center;margin-bottom:10px;">&#128444;&#65039; अनौपचारिक पत्र के उदाहरण - देखें और सीखें</h2>
-        <p style="text-align:center;color:#666;margin-bottom:30px;">Anopcharik Patra Topics - Visual Guide for Board Exam Students</p>
-        <div class="image-gallery-grid">
-            <figure class="gallery-item">
-                <img src="<?php echo url('images/anopcharik-patra-example.png'); ?>" alt="अनौपचारिक पत्र के उदाहरण - Anopcharik Patra Examples in Hindi" title="अनौपचारिक पत्र के उदाहरण" loading="lazy"/>
-                <figcaption><h3>अनौपचारिक पत्र के उदाहरण</h3><span>Anopcharik Patra Examples in Hindi</span></figcaption>
-            </figure>
-            <figure class="gallery-item">
-                <img src="<?php echo url('images/anopcharik-patra-format.png'); ?>" alt="Anopcharik Patra Format - अनौपचारिक पत्र का प्रारूप" title="Anopcharik Patra Format" loading="lazy"/>
-                <figcaption><h3>Anopcharik Patra Format</h3><span>अनौपचारिक पत्र का सही प्रारूप</span></figcaption>
-            </figure>
-            <figure class="gallery-item">
-                <img src="<?php echo url('images/anopcharik-patra-topics.png'); ?>" alt="Anopcharik Patra Topics - अनौपचारिक पत्र के विषय" title="Anopcharik Patra Topics" loading="lazy"/>
-                <figcaption><h3>Anopcharik Patra Topics</h3><span>अनौपचारिक पत्र के सभी विषय</span></figcaption>
-            </figure>
-            <figure class="gallery-item">
-                <img src="<?php echo url('images/anopcharik-patra-class-10.png'); ?>" alt="Anopcharik Patra Class 10 - कक्षा 10 अनौपचारिक पत्र" title="Anopcharik Patra Class 10" loading="lazy"/>
-                <figcaption><h3>Anopcharik Patra Class 10</h3><span>कक्षा 10 के लिए अनौपचारिक पत्र</span></figcaption>
-            </figure>
-        </div>
-    </div>
-</section>
-<style>
-.image-gallery-section{background:#f8f9fa;padding:50px 0;border-top:3px solid var(--color-gold)}
-.image-gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:25px}
-.gallery-item{background:white;border-radius:12px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,.08);transition:all .3s;border:2px solid transparent;margin:0}
-.gallery-item:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(0,0,0,.15);border-color:var(--color-gold)}
-.gallery-item img{width:100%;height:200px;object-fit:cover;display:block}
-.gallery-item figcaption{padding:15px}
-.gallery-item figcaption h3{margin:0 0 5px;font-size:1rem;color:var(--color-navy);font-weight:700}
-.gallery-item figcaption span{font-size:.8rem;color:var(--color-saffron);font-weight:500}
-@media(max-width:600px){.image-gallery-grid{grid-template-columns:repeat(2,1fr);gap:12px}.gallery-item img{height:130px}}
-</style>
-
-<script>
-    // FAQ Toggle & Observations
-    document.querySelectorAll('.faq-question').forEach(function (question) {
-        question.addEventListener('click', function () {
-            this.parentElement.classList.toggle('active');
-        });
-    });
-
-    const observerOptions = { threshold: 0.1, rootMargin: '0px' };
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.mini-topic-card').forEach(card => observer.observe(card));
-</script>
-
-<style>
-    /* CSS unchanged */
-    body {
-        background-color: var(--color-off-white);
-    }
-
-    .main-content-section {
-        padding: var(--spacing-xl) 0;
-    }
-
-    .split-layout {
-        display: grid;
-        grid-template-columns: 1fr 380px;
-        gap: 40px;
-        align-items: start;
-    }
-
-    /* ... (Rest of styles from previous steps) ... */
-    /* Sidebar Styles */
-    .right-sidebar {
-        position: sticky;
-        top: 100px;
-        background: white;
-        border-radius: var(--radius-lg);
-        box-shadow: var(--shadow-lg);
-        overflow: hidden;
-        padding-bottom: var(--spacing-md);
-    }
-
-    .sidebar-header {
-        background: var(--color-navy);
-        padding: var(--spacing-lg);
-        text-align: left;
-    }
-
-    .sidebar-header h3 {
-        color: white;
-        margin: 0;
-        font-size: 1.3rem;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .sidebar-header p {
-        color: var(--color-gold);
-        margin: 5px 0 0;
-        font-size: 0.85rem;
-        opacity: 0.9;
-    }
-
-    .topic-cards-container {
-        height: 600px;
-        overflow-y: auto;
-        padding: var(--spacing-md);
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .topic-cards-container::-webkit-scrollbar {
-        width: 6px;
-    }
-
-    .topic-cards-container::-webkit-scrollbar-track {
-        background: #f1f1f1;
-    }
-
-    .topic-cards-container::-webkit-scrollbar-thumb {
-        background: #ddd;
-        border-radius: 4px;
-    }
-
-    .topic-cards-container::-webkit-scrollbar-thumb:hover {
-        background: var(--color-saffron);
-    }
-
-    .mini-topic-card {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px;
-        background: #f8f9fa;
-        border-radius: 8px;
-        text-decoration: none;
-        border-left: 3px solid transparent;
-        transition: all 0.2s ease;
-    }
-
-    .mini-topic-card:hover {
-        background: white;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        border-left-color: var(--color-saffron);
-        transform: translateX(2px);
-    }
-
-    .mini-topic-card h4 {
-        margin: 0;
-        font-size: 0.95rem;
-        color: var(--color-navy);
-        font-weight: 600;
-        line-height: 1.4;
-        flex: 1;
-    }
-
-    .mini-topic-card .card-category {
-        display: none;
-    }
-
-    .card-arrow {
-        color: var(--color-saffron);
-        font-weight: bold;
-        font-size: 1.2rem;
-        margin-left: 10px;
-    }
-
-    .sidebar-help {
-        padding: 0 var(--spacing-md);
-        margin-top: var(--spacing-sm);
-        text-align: center;
-    }
-
-    .sidebar-help h4 {
-        font-size: 1rem;
-        margin: 0;
-        color: var(--color-navy);
-    }
-
-    .sidebar-help p {
-        font-size: 0.8rem;
-        color: var(--color-gray);
-        margin-top: 4px;
-    }
-
-    .category-quick-links {
-        padding: var(--spacing-md);
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        justify-content: center;
-    }
-
-    .category-pill {
-        font-size: 0.75rem;
-        padding: 4px 10px;
-    }
-
-    @media (max-width: 1024px) {
-        .split-layout {
-            grid-template-columns: 1fr;
-        }
-
-        .right-sidebar {
-            position: relative;
-            top: 0;
-            margin-top: var(--spacing-xl);
-        }
-
-        .topic-cards-container {
-            height: auto;
-            max-height: 500px;
-        }
-    }
-</style>
-
-<?php include 'includes/footer.php'; ?>
+<?php
+require_once __DIR__ . '/includes/footer.php';
+?>

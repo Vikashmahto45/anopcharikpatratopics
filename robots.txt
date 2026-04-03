@@ -1,8 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /config.php
-Disallow: /seed_content.php
-Disallow: /setup_db.php
-Disallow: /includes/
 
 Sitemap: https://anopcharikpatratopics.in/sitemap.xml
