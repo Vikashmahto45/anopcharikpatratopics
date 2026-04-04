@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Do NOT redirect if the requested file actually exists (like our 34 new PHP pages, images, and CSS)
+RewriteCond %{REQUEST_FILENAME} !-f
+# Do NOT redirect if the requested directory actually exists
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# If the file/folder DOES NOT exist (e.g. all 25,000 old indexed 404 links), 
+# 301 Permanently Redirect them to the Home Page (/)
+RewriteRule ^(.*)$ / [R=301,L]
+</IfModule>
+
+# Prevent directory browsing for security
+Options -Indexes
