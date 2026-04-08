@@ -76,6 +76,15 @@ require_once __DIR__ . '/includes/header.php';
 
         <h2>Conclusion</h2>
         <p>Combining heavy topics like waste management with informal letter structures requires storytelling logic. Whether you use a school event, a new government policy, or a recent illness as your trigger point, ensure that the core format of the <strong>kachra pravandhan par anopcharik patra</strong> remains deeply conversational and affectionate.</p>
+    <!-- Related Articles Section -->
+    <div class="related-articles" style="margin-top: 50px; padding-top: 40px; border-top: 2px dashed var(--border-color);">
+        <h2 style="margin-bottom: 30px; text-align: center;">Social Issue Guides</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <a href="anopcharik-patra-topics-in-hindi.php" class="directory-link">50+ Social Topics</a>
+            <a href="anopcharik-patra-format.php" class="directory-link">Format Mastery</a>
+            <a href="anopcharik-patra-example.php" class="directory-link">Sample Letter Library</a>
+            <a href="all-pages.php" class="directory-link">View All 34+ Topics</a>
+        </div>
     </div>
 </div>
 

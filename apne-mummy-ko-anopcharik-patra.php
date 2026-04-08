@@ -79,12 +79,15 @@ require_once __DIR__ . '/includes/header.php';
         <p>When the examination prompt demands an <strong>apne mummy ko anopcharik patra</strong>, treat it as a test of your cultural values translated into grammar. Never abbreviate. Never skip the formal health inquiries. And always end with a promise to uphold the family's honor or a vow to return home soon. This guarantees you access to the uppermost echelons of the marking scheme.</p>
     </div>
 
-    <!-- GROUP 13: Mummy/Mother keyword cluster embedded naturally -->
-    <div class="article-body" style="margin-top: 50px; padding-top: 40px; border-top: 2px dashed var(--border-color);">
-        <h2>माँ और घर — संबंधित खोज विषय</h2>
-        <p>Students searching for <strong>apni mummy ko anopcharik patra</strong> (using "apni" instead of "apne") are asking for the exact same content — a letter to one's mother. The slightly different phrasing simply reflects different regional pronunciation tendencies in Hindi. Both "apne mummy ko" and "apni mummy ko" are acceptable colloquial phrasings that refer to the formal examination category of "माताजी को पत्र" (Letter to Mother).</p>
-
-        <p>One particularly unique and emotionally rich prompt that frequently appears in examinations is: <strong>mitra ke ghar jae ke liye mummi ko anopcharik patra</strong> — writing to your mother asking her permission to go and stay at your friend's house for a few days. This is a beautiful test of how a student can simultaneously pay deep respect to the mother while making a casual, friendly, and persuasive case for a personal request. The key to scoring 5/5 on this specific prompt is three-fold: (1) open with sincere, detailed wellness inquiries, (2) state the request with a compelling and reassuring reason (e.g., "हम दोनों मिलकर अपनी परीक्षा की तैयारी करेंगे"), and (3) close by giving the decision-making power entirely to the mother ("आपकी अनुमति मेरे लिए सर्वोपरि है" — Your permission is paramount for me). This shows cultural respect (Maryada) while still making an effective personal appeal.</p>
+    <!-- Related Articles Section -->
+    <div class="related-articles" style="margin-top: 50px; padding-top: 40px; border-top: 2px dashed var(--border-color);">
+        <h2 style="margin-bottom: 30px; text-align: center;">Writing to Elders</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <a href="anopcharik-patra-to-father.php" class="directory-link">Letter to Father</a>
+            <a href="anopcharik-patra-to-grandfather.php" class="directory-link">Letter to Grandfather</a>
+            <a href="anopcharik-patra-format.php" class="directory-link">Respectful Format Rules</a>
+            <a href="all-pages.php" class="directory-link">View All 34+ Topics</a>
+        </div>
     </div>
 </div>
 

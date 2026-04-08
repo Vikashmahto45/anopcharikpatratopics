@@ -102,12 +102,15 @@ require_once __DIR__ . '/includes/header.php';
         <p>Writing a <strong>short anopcharik patra</strong> is a brilliant exercise in editing. It forces the Hindi student to choose the most powerful verbs and adjectives rather than relying on fluff. When practicing, write out a full 150-word letter first, and then ruthlessly cut it down to 60 words without losing the core emotion or a single formatting rule. This exercise will dramatically improve your overall language skills and ensure you secure full marks in any constrained-time examination scenario.</p>
     </div>
 
-    <!-- GROUP 11: Short/Small/Chota keyword cluster embedded naturally -->
-    <div class="article-body" style="margin-top: 50px; padding-top: 40px; border-top: 2px dashed var(--border-color);">
-        <h2>छोटे और संक्षिप्त पत्र — संबंधित खोज विषय</h2>
-        <p>Students who search for <strong>anopcharik patra short</strong> are usually under time pressure — either they are in the middle of last-minute exam preparation, or the question paper specifically demands a letter within a constrained word count. The key insight for writing a truly effective <strong>short anopcharik patra in hindi</strong> is that conciseness does not mean incompleteness. Every one of the seven format pillars must still appear on the page, no matter how brief the body text is.</p>
-
-        <p>The terms <strong>small anopcharik patra</strong> and <strong>chota anopcharik patra</strong> are used interchangeably by students and refer to the same category of constrained-word-count letters. Hindi grammar teachers recommend that any letter under 80 words is classified as "Chota/Small." For a "Chota Anopcharik Patra," the most effective strategy is to merge the wellness inquiry and the core message into a single efficient paragraph. This saves approximately 25–30 words while maintaining the emotional and structural integrity of the letter. The word that separates "small but perfect" from "small and incomplete" is usually the closing sentence of the shortened body paragraph — students who forget to include it typically lose the Expression mark even on short letters.</p>
+    <!-- Related Articles Section -->
+    <div class="related-articles" style="margin-top: 50px; padding-top: 40px; border-top: 2px dashed var(--border-color);">
+        <h2 style="margin-bottom: 30px; text-align: center;">Concise Writing Resources</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <a href="very-short-anopcharik-patra-in-hindi.php" class="directory-link">Very Short Examples (50 words)</a>
+            <a href="anopcharik-patra-ka-prarup.php" class="directory-link">Blueprint for Briefing</a>
+            <a href="anopcharik-patra-lekhan.php" class="directory-link">Art of Compact Writing</a>
+            <a href="all-pages.php" class="directory-link">View All 34+ Topics</a>
+        </div>
     </div>
 </div>
 

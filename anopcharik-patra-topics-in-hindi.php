@@ -89,6 +89,15 @@ require_once __DIR__ . '/includes/header.php';
         <div class="info-box">
             <strong>Exam Preparation Strategy:</strong> You do not need to write out all 50 letters. Pick one topic from each of the 5 categories above. Write those 5 letters out completely. The transition lines will be identical for the other 45 variations. Mastering these core <em>anopcharik patra topics in hindi</em> guarantees exam victory.
         </div>
+    <!-- Related Articles Section -->
+    <div class="related-articles" style="margin-top: 50px; padding-top: 40px; border-top: 2px dashed var(--border-color);">
+        <h2 style="margin-bottom: 30px; text-align: center;">Master the Topics</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <a href="anopcharik-patra-format.php" class="directory-link">Master the Format</a>
+            <a href="anopcharik-patra-example.php" class="directory-link">Sample Letter Library</a>
+            <a href="anopcharik-patra-ka-prarup.php" class="directory-link">Structural blueprints</a>
+            <a href="all-pages.php" class="directory-link">All 34+ Study Guides</a>
+        </div>
     </div>
 </div>
 

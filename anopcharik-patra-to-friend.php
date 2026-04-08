@@ -51,8 +51,6 @@ require_once __DIR__ . '/includes/header.php';
         <p>The transition from sadness missing the friend to excitement about the new city shows emotional depth. Flow-words like <em>स्थानांतरण</em> (transfer) and <em>विहंगम</em> (spectacular) prove a high vocabulary level, distancing the writing from street-level informal chat.</p>
 
         <h2>Theme 2: Inspiring and Motivating</h2>
-        <p>Another classic prompt asks you to encourage a friend who might be feeling low due to academic failure or sickness. This tests your empathetic tone.</p>
-
         <div class="letter-box">
             <strong>प्रश्न:</strong> आपका मित्र अपनी हाल ही की परीक्षाओं में अच्छे अंक प्राप्त न कर पाने के कारण निराश है। उसे सांत्वना (consolation) देते हुए और भविष्य के लिए प्रेरित करते हुए पत्र लिखिए।<br><br>
 
@@ -66,7 +64,7 @@ require_once __DIR__ . '/includes/header.php';
 
             यहाँ सब कुशल-मंगल है। कल ही मुझे तुम्हारा पत्र प्राप्त हुआ, जिसे पढ़कर मुझे बहुत खेद और हैरानी हुई। यह जानकर निराशा हुई कि तुम अपनी प्री-बोर्ड परीक्षाओं में अपनी अपेक्षाओं के अनुरूप अंक प्राप्त नहीं कर पाए और इस बात को लेकर गहरे अवसाद (depression/sadness) में हो।<br><br>
 
-            मेरे प्यारे मित्र, मैं इस समय तुम्हारी मानसिक स्थिति को भली-भांति समझ सकता हूँ। परंतु तुम्हें यह नहीं भूलना चाहिए कि एक परीक्षा का परिणाम तुम्हारे संपूर्ण जीवन की योग्यता को तय नहीं कर सकता। असफलता (Failure) तो वास्तव में सफलता की पहली सीढ़ी होती है। हो सकता है कि तुम्हारी तैयारी की रणनीति में कुछ कमी रह गई हो, या शायद परीक्षा के दिन तुम अत्यधिक तनाव में रहे होगे। इस समय निराश होकर बैठ जाने से समस्या हल नहीं होगी। बल्कि यह समय अपनी गलतियों का आत्म-विश्लेषण (self-analysis) करने और दोगुनी ऊर्जा के साथ उठ खड़े होने का है। मुझे तुम्हारी बुद्धिमत्ता (intelligence) और तुम्हारी मेहनत करने की क्षमता पर अटूट विश्वास है।<br><br>
+            मेरे प्यारे मित्र, मैं इस समय तुम्हारी मानसिक स्थिति को भली-भांति समझ सकता हूँ। परंतु तुम्हें यह नहीं भूलना चाहिए कि एक परीक्षा का परिणाम तुम्हारे संपूर्ण जीवन की योग्यता को तय नहीं कर सकता। असफलता (Failure) तो वास्तव में सफलता की पहली सीढ़ी होती है। हो सकता है कि तुम्हारी तैयारी की रणनीति में कुछ कमी रह गई हो, या शायद परीक्षा के दिन तुम अत्यधिक तनाव में रहे होगे। इस समय निराश होकर बैठ जाने से समस्या हल नहीं होगी। बल्कि यह समय अपनी गलतियों का आत्म-विश्लेषण (self-analysis) करने और दोगुनी ऊर्जा के साथ उठ खड़े होने का है। मुझे तुम्हारी बुद्धिमत्ता (intelligence) और तुम्हारी मेहनत करने की क्षमता पर अटूट विश्वास है।<br><br>
 
             मुख्य बोर्ड परीक्षा में अभी भी दो महीने का समय शेष है। तुम आज ही एक नई समय-सारणी बनाओ और एकाग्रचित्त होकर पढ़ाई में जुट जाओ। यदि तुम्हें गणित या विज्ञान के किसी भी विषय में मेरी सहायता की आवश्यकता हो, तो बेझिझक बताना। मुझे पूरा यकीन है कि अंतिम परीक्षा में तुम शानदार अंकों के साथ उत्तीर्ण होगे।<br><br>
 
@@ -80,12 +78,15 @@ require_once __DIR__ . '/includes/header.php';
         <p>Drafting an <strong>anopcharik patra to friend</strong> offers the highest degree of creative storytelling within the exam format. Always establish a nostalgic or deeply supportive tone, stick rigorously to the three-paragraph structure, and avoid the lethal mistake of adding a Subject Line. Do this, and you are guaranteed maximum marks.</p>
     </div>
 
-    <!-- GROUP 12: Friend keyword cluster embedded naturally -->
-    <div class="article-body" style="margin-top: 50px; padding-top: 40px; border-top: 2px dashed var(--border-color);">
-        <h2>मित्र को पत्र — संपूर्ण खोज संग्रह</h2>
-        <p>The search for <strong>anopcharik patra mitar ko in hindi</strong> is more commonly phrased in Hindi as "मित्र को अनौपचारिक पत्र" and is among the top 5 most searched informal letter topics in India. Students looking for <strong>anopcharik patra to friend samples</strong> are specifically seeking complete, ready-to-study model letters — not just format templates. This page provides exactly that: two fully-realized, examiner-approved sample letters addressing the most likely "friend" prompts on any board examination.</p>
-
-        <p>One more niche but increasingly tested prompt is the <strong>anopcharik patra to invite friend to inauguration</strong> — where the student is asked to write a letter inviting their friend to the inauguration of a new shop, business, or community center. This prompt tests whether a student can apply the "Invitation" letter vocabulary within the friendship register. The key difference from a standard invitation is that you must include specific details: the date, the time, the type of event, and a personalized reason why you specifically want this friend to be present. A letter that says "Please come to the inauguration on Saturday" will score lower than one that says "तुम्हारी उपस्थिति के बिना यह उद्घाटन-समारोह अधूरा सा लगेगा" (Without your presence, this inauguration will feel incomplete).</p>
+    <!-- Related Articles Section -->
+    <div class="related-articles" style="margin-top: 50px; padding-top: 40px; border-top: 2px dashed var(--border-color);">
+        <h2 style="margin-bottom: 30px; text-align: center;">More Friendship Guides</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <a href="anopcharik-patra-to-birthday-friend.php" class="directory-link">Birthday Invitations</a>
+            <a href="anopcharik-patra-to-friend-for-failure-in-exam.php" class="directory-link">Motivating a Friend</a>
+            <a href="anopcharik-patra-example.php" class="directory-link">View All Friend Scenarios</a>
+            <a href="all-pages.php" class="directory-link">View All 34+ Topics</a>
+        </div>
     </div>
 </div>
 

@@ -94,6 +94,15 @@ require_once __DIR__ . '/includes/header.php';
 
         <h2>Conclusion</h2>
         <p>When you sit in your exam hall and face a prompt about recalling the past, remember the phrase <strong>anopcharik patra madhur smrutiya</strong>. Do not rush into the memory. Spend the first paragraph setting the scene (e.g., finding an old photo, smelling rain, hearing an old song), and then let the descriptive nostalgia flow into the second paragraph. This organic storytelling approach is guaranteed to secure perfect marks.</p>
+    <!-- Related Articles Section -->
+    <div class="related-articles" style="margin-top: 50px; padding-top: 40px; border-top: 2px dashed var(--border-color);">
+        <h2 style="margin-bottom: 30px; text-align: center;">Nostalgic Guides</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <a href="anopcharik-patra-to-friend.php" class="directory-link">Letters to Friends</a>
+            <a href="apne-mummy-ko-anopcharik-patra.php" class="directory-link">Letters to Mother</a>
+            <a href="anopcharik-patra-format.php" class="directory-link">Master the Format</a>
+            <a href="all-pages.php" class="directory-link">View All 34+ Topics</a>
+        </div>
     </div>
 </div>
 

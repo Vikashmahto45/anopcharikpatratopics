@@ -106,16 +106,15 @@ require_once __DIR__ . '/includes/header.php';
         <p>When you attempt the <strong>anopcharik patra class 10th</strong> question during actual boards, do not start writing immediately. Spend 2 minutes drafting the outline. Decide what emotion you will convey in Paragraph 1, what logical arguments or descriptions will form Paragraph 2, and what concluding regards will form Paragraph 3. Write purely, write neatly, and you will easily secure perfect marks.</p>
     </div>
 
-    <!-- GROUP 6: Class 10 keyword cluster embedded naturally -->
-    <div class="article-body" style="margin-top: 50px; padding-top: 40px; border-top: 2px dashed var(--border-color);">
-        <h2>कक्षा १०वीं और संबंधित खोज विषय</h2>
-        <p>The <strong>anopcharik patra in hindi class 10</strong> syllabus is the most critical milestone in a student's secondary education. Board examiners have confirmed that the letter writing section carries disproportionate weight—a perfectly executed letter can compensate for minor grammatical errors elsewhere in the paper. Students specifically looking for <strong>anopcharik patra for class 10th</strong> preparation resources should prioritize practicing five core emotional tones: invitation, congratulation, advice, complaint-to-relative, and condolence.</p>
-
-        <p>Those searching for <strong>anopcharik patra in hindi for class 10</strong> should note that the CBSE Class 10 paper typically presents two informal letter prompts and asks the student to write one. This choice is strategic — always select the prompt whose emotional tone you have more vocabulary for. Students who practice the <strong>2 anopcharik patra in hindi for class 10</strong> (two contrasting letter types) back-to-back will naturally develop this prompt-selection instinct over time.</p>
-
-        <p>Board papers also frequently test the comparative knowledge of <strong>5 anopcharik patra in hindi for class 10</strong> scenarios. Having five pre-built letter templates in your memory (one for each of the five emotional tones mentioned above) is the gold standard preparation method. The <strong>anopcharik patra format class 10</strong> is identical to Class 9 in structure but differs crucially in the richness of vocabulary expected — specifically in the body's second paragraph, where Class 10 students are expected to produce complex compound sentences rather than simple declarative ones.</p>
-
-        <p>Students in Class 8 who are beginning their preparation early should begin with the <strong>anopcharik patra in hindi class 8</strong> curriculum, which uses simpler vocabulary and shorter body paragraphs (60–80 words). The <strong>hindi anopcharik patra class 8 format</strong> likewise follows the exact same seven-pillar left-aligned structure — the only difference from Class 10 is the complexity of the words and the depth of the arguments used in Paragraph 2. Starting preparation with Class 8 examples and gradually scaling to Class 10 examples is the most methodical preparation path possible.</p>
+    <!-- Related Articles Section -->
+    <div class="related-articles" style="margin-top: 50px; padding-top: 40px; border-top: 2px dashed var(--border-color);">
+        <h2 style="margin-bottom: 30px; text-align: center;">Class 10th Exam Resources</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <a href="anopcharik-patra-questions.php" class="directory-link">Class 10 Practice Questions</a>
+            <a href="anopcharik-patra-format.php" class="directory-link">Board-Approved Format</a>
+            <a href="anopcharik-patra-class-12.php" class="directory-link">Advanced Level (Class 12)</a>
+            <a href="all-pages.php" class="directory-link">View All 34+ Topics</a>
+        </div>
     </div>
 </div>
 

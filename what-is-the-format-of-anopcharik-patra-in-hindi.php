@@ -120,6 +120,15 @@ require_once __DIR__ . '/includes/header.php';
         </div>
 
         <p>By strictly following the format outlined above, you ensure that the examiner immediately recognizes your proficiency. When anyone asks you <em>what is the format of anopcharik patra in hindi</em>, you now have the definitive, board-approved answer.</p>
+    <!-- Related Articles Section -->
+    <div class="related-articles" style="margin-top: 50px; padding-top: 40px; border-top: 2px dashed var(--border-color);">
+        <h2 style="margin-bottom: 30px; text-align: center;">Master the Hindi Format</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <a href="anopcharik-patra-format.php" class="directory-link">Comprehensive Format Guide</a>
+            <a href="anopcharik-patra-ka-prarup.php" class="directory-link">Structural Prarup Analysis</a>
+            <a href="anopcharik-patra-questions.php" class="directory-link">Format Practice Questions</a>
+            <a href="all-pages.php" class="directory-link">View All 34+ Topics</a>
+        </div>
     </div>
 </div>
 

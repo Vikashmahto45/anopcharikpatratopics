@@ -12,7 +12,7 @@
                 <ul>
                     <li><a href="<?php echo url('anopcharik-patra.php'); ?>">What is Anopcharik Patra?</a></li>
                     <li><a href="<?php echo url('anopcharik-patra-format.php'); ?>">Master Format Guide</a></li>
-                    <li><a href="<?php echo url('difference-between-aupcharik-and-anopcharik-patra.php'); ?>">Aupcharik vs Anopcharik</a></li>
+                    <li><a href="<?php echo url('aupcharik-aur-anopcharik-patra.php'); ?>">Aupcharik vs Anopcharik</a></li>
                     <li><a href="<?php echo url('all-pages.php'); ?>">View All 30+ Topics</a></li>
                 </ul>
             </div>

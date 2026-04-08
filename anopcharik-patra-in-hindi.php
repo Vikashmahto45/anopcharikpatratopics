@@ -120,14 +120,15 @@ require_once __DIR__ . '/includes/header.php';
 
     </div>
 
-    <!-- GROUP 8: General Hindi-medium keyword cluster embedded naturally -->
-    <div class="article-body" style="margin-top: 50px; padding-top: 40px; border-top: 2px dashed var(--border-color);">
-        <h2>हिंदी पत्र लेखन — सामान्य खोज विषय</h2>
-        <p>Students frequently search for <strong>hindi anopcharik patra</strong> as a primary term when they want a letter written entirely in Devanagari script without any Roman transliteration. The distinction matters because some websites provide letters in transliterated Roman Hindi (e.g., "Aapka aagyakari putr") which is absolutely unacceptable in a board examination. All <strong>hindi mein anopcharik patra</strong> written for examination purposes must be composed entirely in proper Devangari script, following the exact Unicode character set for Matras.</p>
-
-        <p>The search for <strong>hindi mein anopcharik patra ka format</strong> is essentially identical to the standard format — left-aligned with seven components — but the question emphasizes that students need the format explained in Hindi grammar terminology rather than English. Understanding <strong>anopcharik patra in hindi format</strong> from a Hindi-language explanation is inherently more natural for most students, as the terminology (संबोधन, अभिवादन, समापन) is more intuitive than their English equivalents.</p>
-
-        <p>One common problem students face when studying <strong>anopcharik patra hindi format</strong> from older textbooks is that these books show a right-aligned date and signature (the old Indented Format). Completely disregard these. All boards have transitioned to the fully left-aligned Block Format, and the <strong>format of hindi anopcharik patra</strong> that you will be tested on in any current examination is exclusively the left-aligned version. Students writing <strong>anopcharik patra in hindi hindi mai</strong> (the redundant phrasing often searched because students want to be sure the output is purely in Hindi) should take care to avoid English loanwords in the body — using "phone" instead of "दूरभाष" or "class" instead of "कक्षा" can reduce your Expression marks. The correct terminology for every common English word used in these educational contexts exists in Hindi, and using it is what toppers do.</p>
+    <!-- Related Articles Section -->
+    <div class="related-articles" style="margin-top: 50px; padding-top: 40px; border-top: 2px dashed var(--border-color);">
+        <h2 style="margin-bottom: 30px; text-align: center;">Related Hindi Guides</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <a href="hindi-me-anopcharik-patra.php" class="directory-link">Hindi Me Anopcharik Patra</a>
+            <a href="anopcharik-patra-lekhan.php" class="directory-link">Anopcharik Patra Lekhan</a>
+            <a href="5-anopcharik-patra-in-hindi.php" class="directory-link">5 Practice Examples</a>
+            <a href="all-pages.php" class="directory-link">View All 34+ Topics</a>
+        </div>
     </div>
 </div>
 

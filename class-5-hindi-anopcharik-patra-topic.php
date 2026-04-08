@@ -101,12 +101,15 @@ require_once __DIR__ . '/includes/header.php';
         <p>When teaching a <strong>class 5 hindi anopcharik patra topic</strong>, do not burden the child with the strict adult rules of "Vyavaharik Bhasha". Encourage them to write exactly how they speak to their friends and family, only ensuring that they place the Address at the absolute top-left and the Sign-off at the bottom-left. By focusing on enthusiasm rather than rigid literary perfection, a 5th grader will develop a lifelong love for Hindi composition.</p>
     </div>
 
-    <!-- GROUP 15b: Class 4/5/6/7/8 keyword cluster embedded naturally -->
-    <div class="article-body" style="margin-top: 50px; padding-top: 40px; border-top: 2px dashed var(--border-color);">
-        <h2>प्राथमिक कक्षाओं के लिए पत्र — सभी खोज विषय</h2>
-        <p>Students in the early classes often search for class-specific guidance. Those studying in primary school frequently search for <strong>anopcharik patra for class 4</strong>, <strong>anopcharik patra in hindi for class 5</strong>, and <strong>anopcharik patra for class 6</strong>. For all of these lower primary classes, the guiding principle is identical: use very simple Hindi sentences, keep the body to 4–5 lines, and ensure the date and salutation are correctly placed at the left margin.</p>
-
-        <p>As students progress slightly, they look for <strong>anopcharik patra in hindi for class 7</strong> content, which introduces slightly more complex vocabulary and requires a clearer three-paragraph structure. The <strong>anopcharik patra for class 8</strong> and <strong>anopcharik patra in hindi for class 8</strong> curriculum takes another step up — the word count increases to 80–100 words, and the body must be clearly divided into three distinct paragraphs. Additionally, the <strong>anopcharik patra in hindi for class 8 format</strong> is the exact same left-aligned seven-component format taught in higher classes, making Class 8 the ideal transition year for students to master the full standard format before entering the board exam years of Class 9 and 10. Students in Class 6 often look for help from NCERT, and <strong>anopcharik patra class 6 cbse</strong> content is available in the NCERT Hindi Vasant textbook, which provides foundational model letters for this age group. The <strong>anopcharik patra kaksha 6 ke liye</strong> content (Kaksha meaning "Class" in Hindi) is identical in scope to the CBSE Class 6 standard.</p>
+    <!-- Related Articles Section -->
+    <div class="related-articles" style="margin-top: 50px; padding-top: 40px; border-top: 2px dashed var(--border-color);">
+        <h2 style="margin-bottom: 30px; text-align: center;">Elementary Writing Guides</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <a href="anopcharik-patra-class-9.php" class="directory-link">Next Level: Class 9</a>
+            <a href="anopcharik-patra-class-10th.php" class="directory-link">Master Level: Class 10</a>
+            <a href="anopcharik-patra-format.php" class="directory-link">Universal Format Guide</a>
+            <a href="all-pages.php" class="directory-link">View All 34+ Topics</a>
+        </div>
     </div>
 </div>
 
