@@ -61,6 +61,8 @@ $current_seo = get_seo_data($pdo, $current_filename);
                     <li><a href="<?php echo url('#format'); ?>">Master Format</a></li>
                     <li><a href="<?php echo url('#topics'); ?>">Topic Library</a></li>
                     <li><a href="<?php echo url('#examples'); ?>">Master Bank</a></li>
+                    <li><a href="<?php echo url('about.php'); ?>">About Us</a></li>
+                    <li><a href="<?php echo url('contact.php'); ?>">Contact Us</a></li>
                 </ul>
             </nav>
         </div>
