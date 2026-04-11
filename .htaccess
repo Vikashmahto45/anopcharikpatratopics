@@ -6,6 +6,43 @@ RewriteCond %{REQUEST_FILENAME} !-f
 # Do NOT redirect if the requested directory actually exists
 RewriteCond %{REQUEST_FILENAME} !-d
 
+# [SEO CONSOLIDATION] Redirect legacy fragments to the Ultimate Portal
+Redirect 301 /10-anopcharik-patra-in-hindi-for-class-9.php /
+Redirect 301 /2-anopcharik-patra-in-hindi.php /
+Redirect 301 /3-anopcharik-patra-in-hindi.php /
+Redirect 301 /5-anopcharik-patra-in-hindi.php /
+Redirect 301 /all-pages.php /
+Redirect 301 /anopcharik-patra-bank-manager-ko.php /
+Redirect 301 /anopcharik-patra-bus-conductor.php /
+Redirect 301 /anopcharik-patra-class-10th.php /
+Redirect 301 /anopcharik-patra-class-12.php /
+Redirect 301 /anopcharik-patra-class-9.php /
+Redirect 301 /anopcharik-patra-example.php /
+Redirect 301 /anopcharik-patra-format-class-9.php /
+Redirect 301 /anopcharik-patra-format.php /
+Redirect 301 /anopcharik-patra-hindi.php /
+Redirect 301 /anopcharik-patra-in-hindi.php /
+Redirect 301 /anopcharik-patra-in-marathi.php /
+Redirect 301 /anopcharik-patra-in-sanskrit.php /
+Redirect 301 /anopcharik-patra-ka-prarup.php /
+Redirect 301 /anopcharik-patra-lekhan-kise-kahate-hain.php /
+Redirect 301 /anopcharik-patra-lekhan.php /
+Redirect 301 /anopcharik-patra-madhur-smrutiya.php /
+Redirect 301 /anopcharik-patra-questions.php /
+Redirect 301 /anopcharik-patra-to-friend.php /
+Redirect 301 /anopcharik-patra-topics-in-hindi.php /
+Redirect 301 /anopcharik-patra-wikipedia.php /
+Redirect 301 /anopcharik-patra.php /
+Redirect 301 /apne-mummy-ko-anopcharik-patra.php /
+Redirect 301 /aupcharik-aur-anopcharik-patra.php /
+Redirect 301 /best-anopcharik-patra-in-hindi.php /
+Redirect 301 /class-5-hindi-anopcharik-patra-topic.php /
+Redirect 301 /do-anopcharik-patra.php /
+Redirect 301 /hindi-me-anopcharik-patra.php /
+Redirect 301 /kachra-prabandhan-par-anopcharik-patra.php /
+Redirect 301 /short-anopcharik-patra.php /
+Redirect 301 /what-is-the-format-of-anopcharik-patra-in-hindi.php /
+
 # If the file/folder DOES NOT exist (e.g. all 25,000 old indexed 404 links), 
 # 301 Permanently Redirect them to the Home Page (/)
 RewriteRule ^(.*)$ / [R=301,L]

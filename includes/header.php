@@ -57,9 +57,10 @@ $current_seo = get_seo_data($pdo, $current_filename);
             <nav class="header-nav">
                 <ul>
                     <li><a href="<?php echo url(); ?>">Home</a></li>
-                    <li><a href="<?php echo url('anopcharik-patra.php'); ?>">What is it?</a></li>
-                    <li><a href="<?php echo url('anopcharik-patra-format.php'); ?>">Formats</a></li>
-                    <li><a href="<?php echo url('all-pages.php'); ?>">All Topics</a></li>
+                    <li><a href="<?php echo url('#foundation'); ?>">Foundation</a></li>
+                    <li><a href="<?php echo url('#format'); ?>">Master Format</a></li>
+                    <li><a href="<?php echo url('#topics'); ?>">Topic Library</a></li>
+                    <li><a href="<?php echo url('#examples'); ?>">Master Bank</a></li>
                 </ul>
             </nav>
         </div>
