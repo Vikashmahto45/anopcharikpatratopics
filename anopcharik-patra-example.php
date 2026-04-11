@@ -3,6 +3,12 @@ require_once __DIR__ . '/includes/header.php';
 ?>
 
 <div class="content-wrapper">
+        <div class="breadcrumb-wrap">
+            <a href="index.php">Home</a> <span>&rsaquo;</span>
+            <a href="patra-lekhan-academy.php">Patra Lekhan Academy</a> <span>&rsaquo;</span>
+            
+        </div>
+
     <!-- EXACT KEYWORD H1 -->
     <h1 class="article-title">anopcharik patra example</h1>
 

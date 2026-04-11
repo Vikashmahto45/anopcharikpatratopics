@@ -266,14 +266,111 @@ require_once __DIR__ . '/includes/header.php';
             Hindi grammar. We provide 34 deeply researched, 1000+ word execution guides to guarantee perfect marks in
             the writing section.</p>
         <div class="cta-group">
-            <a href="<?php echo url('best-anopcharik-patra-in-hindi.php'); ?>" class="cta-btn-primary">View the #1 Best
-                Letter</a>
-            <a href="#topics" class="cta-btn-outline">Explore All 34 Topics</a>
+            <a href="<?php echo url('index.php'); ?>" class="cta-btn-primary">Explore 34 Patra Topics</a>
+            <a href="literature-academy.php" class="cta-btn-outline">Explore 65 Literature Chapters</a>
         </div>
     </div>
 </section>
 
-<!-- FEATURES SECTION -->
+<!-- LITERATURE HUB PREVIEW -->
+<section id="literature-hub" class="features-section"
+    style="background: white; border-top: 1px solid var(--border-color);">
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h2 style="font-size: 2.5rem; color: var(--brand-dark); margin-bottom: 15px;">The Literature Academy
+                Expansion</h2>
+            <p style="color: var(--text-light); max-width: 800px; margin: 0 auto; font-size: 1.1rem;">We have expanded
+                our repository beyond letter writing. Access 65 high-authority, 1,000+ word deep-dives covering the
+                entire Class 10 Hindi and English curricula.</p>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #eef2ff; color: #6366f1;">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                        </path>
+                    </svg>
+                </div>
+                <h3>Hindi Course B (35 Chapters)</h3>
+                <p style="color: var(--text-light); margin-top: 15px;">Complete analysis of Sparsh & Sanchayan,
+                    including Kabir, Meera, and Harihar Kaka.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #f0f9ff; color: #0ea5e9;">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
+                    </svg>
+                </div>
+                <h3>English (First Flight & Footprints)</h3>
+                <p style="color: var(--text-light); margin-top: 15px;">30 deep-research guides for every poem, prose,
+                    and supplementary chapter.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #fffbeb; color: #f59e0b;">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                        </path>
+                    </svg>
+                </div>
+                <h3>Character Sketch Academy</h3>
+                <p style="color: var(--text-light); margin-top: 15px;">Master the psychology of Lencho, Bholi, and more
+                    with our centralized character bank.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #fdf2f8; color: #db2777;">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
+                        </path>
+                    </svg>
+                </div>
+                <h3>Universal Format Switcher</h3>
+                <p style="color: var(--text-light); margin-top: 15px;">Interactive real-time toggle between 10+ letter
+                    and document formats.</p>
+                <a href="interactive-format-switcher.php"
+                    style="color: #db2777; font-weight: 700; text-decoration: none; display: block; margin-top: 10px; font-size: 0.85rem;">Launch
+                    Utility →</a>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #fff1f2; color: #e11d48;">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                </div>
+                <h3>Character Comparison Engine</h3>
+                <p style="color: var(--text-light); margin-top: 15px;">Analyze protagonists with our side-by-side
+                    literary comparison tool.</p>
+                <a href="character-comparison.php"
+                    style="color: #e11d48; font-weight: 700; text-decoration: none; display: block; margin-top: 10px; font-size: 0.85rem;">Launch
+                    Comparison →</a>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #f0fdf4; color: #16a34a;">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <h3>MCQ Practice Engine</h3>
+                <p style="color: var(--text-light); margin-top: 15px;">Automated test generator for self-assessment
+                    across 65 literature chapters.</p>
+                <a href="mcq-practice-engine.php"
+                    style="color: #16a34a; font-weight: 700; text-decoration: none; display: block; margin-top: 10px; font-size: 0.85rem;">Launch
+                    Practice →</a>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="literature-academy.php" class="cta-btn-primary"
+                style="background: var(--brand-dark); color: white;">Visit Literature Academy →</a>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES SECTION (Duplicate original follows but I'll skip it) -->
 <section class="features-section">
     <div class="container">
         <div class="feature-grid">
@@ -345,7 +442,8 @@ require_once __DIR__ . '/includes/header.php';
 
                 <p>In the modern digital age, while emails and instant messaging have become ubiquitous, the
                     <em>anopcharik patra</em> remains a vital part of the academic curriculum because it tests twice as
-                    much as a formal letter: your grammar and your emotional intelligence (EQ).</p>
+                    much as a formal letter: your grammar and your emotional intelligence (EQ).
+                </p>
 
                 <h3 style="margin-top: 40px;">अनौपचारिक पत्र लेखन किसे कहते हैं? (Academic Definition)</h3>
                 <p>शैक्षणिक दृष्टि से, <strong>अनौपचारिक पत्र लेखन</strong> उन पत्रों को कहा जाता है जो निजी संबंधों के
@@ -382,7 +480,8 @@ require_once __DIR__ . '/includes/header.php';
 
             <ul style="line-height: 2;">
                 <li><strong>1. Sender's Address (प्रेषक का पता):</strong> Positioned at the extreme top-left. Use
-                    <em>परीक्षा भवन</em> if no address is provided in the prompt.</li>
+                    <em>परीक्षा भवन</em> if no address is provided in the prompt.
+                </li>
                 <li><strong>2. The Date (दिनांक):</strong> Fully spelled out (e.g., १५ मार्च, २०२६) beneath the address.
                 </li>
                 <li><strong>3. Salutation (संबोधन):</strong> Respectful for elders (पूज्य), equal for friends (प्रिय),
