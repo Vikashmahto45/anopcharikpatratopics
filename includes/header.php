@@ -50,8 +50,7 @@ $current_seo = get_seo_data($pdo, $current_filename);
     <header class="site-header">
         <div class="container header-contents">
             <a href="<?php echo url(); ?>" class="site-logo">
-                <img src="<?php echo url('img/logo.png'); ?>" alt="Patra Topics Logo"
-                    style="height: 45px; margin-right: 10px;">
+                <img src="<?php echo url('img/logo.png'); ?>" alt="Patra Topics Logo">
                 <span>Patra<span style="color: var(--accent-light);">Topics</span></span>
             </a>
             <nav class="header-nav">
@@ -60,7 +59,7 @@ $current_seo = get_seo_data($pdo, $current_filename);
                     <li><a href="<?php echo url('#foundation'); ?>">Foundation</a></li>
                     <li><a href="<?php echo url('#format'); ?>">Master Format</a></li>
                     <li><a href="<?php echo url('#topics'); ?>">Topic Library</a></li>
-                    <li><a href="<?php echo url('#examples'); ?>">Master Bank</a></li>
+                    <li><a href="<?php echo url('patra-master-bank.php'); ?>">Master Bank</a></li>
                     <li><a href="<?php echo url('about.php'); ?>">About Us</a></li>
                     <li><a href="<?php echo url('contact.php'); ?>">Contact Us</a></li>
                 </ul>

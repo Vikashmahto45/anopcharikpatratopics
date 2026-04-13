@@ -266,7 +266,8 @@ require_once __DIR__ . '/includes/header.php';
             Hindi grammar. We provide 34 deeply researched, 1000+ word execution guides to guarantee perfect marks in
             the writing section.</p>
         <div class="cta-group">
-            <a href="<?php echo url('index.php'); ?>" class="cta-btn-primary">Explore 34 Patra Topics</a>
+            <a href="<?php echo url('patra-master-bank.php'); ?>" class="cta-btn-primary">Explore 34 Patra Topics <span
+                    style="font-size: 0.7rem; background: var(--brand-dark); color: white; padding: 2px 8px; border-radius: 20px; vertical-align: middle; margin-left: 5px;">NEW</span></a>
             <a href="literature-academy.php" class="cta-btn-outline">Explore 65 Literature Chapters</a>
         </div>
     </div>
