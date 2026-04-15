@@ -176,47 +176,71 @@
 
     </div>
 
-    
-        <div class="content-card pedagogical-footer" style="background: #fdf2f2; border-color: #fecaca; margin-top: 50px;">
-            <h2 class="sub-header" style="color: #991b1b; border-bottom-color: #fee2e2;">Board Exam Preparation Tips: The Thiefs Story</h2>
-            <div class="content-block">
-                <p>To excel in the CBSE Board examinations for <strong>The Thiefs Story</strong>, students should focus on the following key areas:</p>
-                <ul style="margin: 15px 0;">
-                    <li><strong>Identify the Central Theme:</strong> Often, boards ask about the underlying message (e.g., Faith in A Letter to God or Freedom in Nelson Mandela).</li>
-                    <li><strong>Character Analysis:</strong> Prepare 100-word sketches for all protagonists and antagonists mentioned in The Thiefs Story.</li>
-                    <li><strong>Contextual Reference:</strong> Practice writing answers starting with a brief introduction to the author/poet and the setting.</li>
-                </ul>
-            </div>
-            
-            <h3 style="margin-top: 25px; color: #991b1b;">Vocabulary Bank (High-Intent Keywords)</h3>
-            <table style="width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.95rem;">
-                <tr style="background: #fee2e2;">
-                    <th style="padding: 10px; border: 1px solid #fecaca; text-align: left;">Word</th>
-                    <th style="padding: 10px; border: 1px solid #fecaca; text-align: left;">Contextual Meaning</th>
-                </tr>
-                <tr>
-                    <td style="padding: 10px; border: 1px solid #fecaca;">Poignant</td>
-                    <td style="padding: 10px; border: 1px solid #fecaca;">Evoking a keen sense of sadness or regret.</td>
-                </tr>
-                <tr>
-                    <td style="padding: 10px; border: 1px solid #fecaca;">Metaphor</td>
-                    <td style="padding: 10px; border: 1px solid #fecaca;">A figure of speech in which a word or phrase is applied to an action.</td>
-                </tr>
-                <tr>
-                    <td style="padding: 10px; border: 1px solid #fecaca;">Resilience</td>
-                    <td style="padding: 10px; border: 1px solid #fecaca;">The capacity to recover quickly from difficulties.</td>
-                </tr>
-            </table>
 
-            <div style="margin-top: 30px; padding: 20px; background: white; border-radius: 12px; text-align: center;">
-                <h4>Boost Your Mastery</h4>
-                <p>Try our interactive tools to test your knowledge of The Thiefs Story:</p>
-                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
-                    <a href="mcq-practice-engine.php" style="padding: 10px 20px; background: var(--brand-dark); color: white; border-radius: 8px; text-decoration: none; font-size: 0.9rem;">MCQ Practice</a>
-                    <a href="character-comparison.php" style="padding: 10px 20px; background: var(--brand-primary); color: white; border-radius: 8px; text-decoration: none; font-size: 0.9rem;">Character Analysis</a>
-                </div>
+    <div class="content-card pedagogical-footer" style="background: #fdf2f2; border-color: #fecaca; margin-top: 50px;">
+        <h2 class="sub-header" style="color: #991b1b; border-bottom-color: #fee2e2;">Board Exam Preparation Tips: The
+            Thiefs Story</h2>
+        <div class="content-block">
+            <p>To excel in the CBSE Board examinations for <strong>The Thiefs Story</strong>, students should focus on
+                the following key areas:</p>
+            <ul style="margin: 15px 0;">
+                <li><strong>Identify the Central Theme:</strong> Often, boards ask about the underlying message (e.g.,
+                    Faith in A Letter to God or Freedom in Nelson Mandela).</li>
+                <li><strong>Character Analysis:</strong> Prepare 100-word sketches for all protagonists and antagonists
+                    mentioned in The Thiefs Story.</li>
+                <li><strong>Contextual Reference:</strong> Practice writing answers starting with a brief introduction
+                    to the author/poet and the setting.</li>
+            </ul>
+        </div>
+
+        <h3 style="margin-top: 25px; color: #991b1b;">Vocabulary Bank (High-Intent Keywords)</h3>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.95rem;">
+            <tr style="background: #fee2e2;">
+                <th style="padding: 10px; border: 1px solid #fecaca; text-align: left;">Word</th>
+                <th style="padding: 10px; border: 1px solid #fecaca; text-align: left;">Contextual Meaning</th>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #fecaca;">Poignant</td>
+                <td style="padding: 10px; border: 1px solid #fecaca;">Evoking a keen sense of sadness or regret.</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #fecaca;">Metaphor</td>
+                <td style="padding: 10px; border: 1px solid #fecaca;">A figure of speech in which a word or phrase is
+                    applied to an action.</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #fecaca;">Resilience</td>
+                <td style="padding: 10px; border: 1px solid #fecaca;">The capacity to recover quickly from difficulties.
+                </td>
+            </tr>
+        </table>
+
+        <div style="margin-top: 30px; padding: 20px; background: white; border-radius: 12px; text-align: center;">
+            <h4>Boost Your Mastery</h4>
+            <p>Try our interactive tools to test your knowledge of The Thiefs Story:</p>
+            <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
+                <a href="mcq-practice-engine.php"
+                    style="padding: 10px 20px; background: var(--brand-dark); color: white; border-radius: 8px; text-decoration: none; font-size: 0.9rem;">MCQ
+                    Practice</a>
+                <a href="character-comparison.php"
+                    style="padding: 10px 20px; background: var(--brand-primary); color: white; border-radius: 8px; text-decoration: none; font-size: 0.9rem;">Character
+                    Analysis</a>
             </div>
         </div>
+
+        <div
+            style="margin-top: 40px; padding: 30px; background: white; border: 1px solid #fecaca; border-radius: 16px; display: flex; gap: 20px; align-items: center; text-align: left;">
+            <div
+                style="width: 80px; height: 80px; background: #991b1b; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 800;">
+                VM</div>
+            <div>
+                <h4 style="margin: 0; color: #991b1b;">Meet the Author: Prof. Vikash Mahto</h4>
+                <p style="margin: 5px 0 0; font-size: 0.95rem; color: #4b5563;">Lead Content Architect at Literature
+                    Academy with over 15 years of experience in secondary education. Specializing in high-intent
+                    pedagogical frameworks for CBSE and ICSE boards.</p>
+            </div>
+        </div>
+    </div>
     <?php include('includes/footer.php'); ?>
 
 </body>

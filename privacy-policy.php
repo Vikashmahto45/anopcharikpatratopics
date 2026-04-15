@@ -54,6 +54,26 @@ require_once __DIR__ . '/includes/header.php';
                 information. It may include their practices and instructions about how to opt-out of certain options.
             </p>
 
+            <h2>California Privacy Rights (CCPA)</h2>
+            <p>Under the CCPA, California consumers have the right to request that a business that collects a consumer's
+                personal data disclose the categories and specific pieces of personal data that a business has collected
+                about consumers. We will respond to any verifiable consumer requests within the legally mandated
+                timeframe.</p>
+
+            <h2>GDPR Data Protection Rights</h2>
+            <p>We would like to make sure you are fully aware of all of your data protection rights. Every user is
+                entitled to the following: (i) The right to access, (ii) The right to rectification, (iii) The right to
+                erasure, and (iv) The right to object to processing. If you make a request, we have one month to respond
+                to you.</p>
+
+            <h2>Contact Information</h2>
+            <p>If you have any questions or concerns about this Privacy Policy or our data handling practices, please
+                contact our Compliance Officer at:</p>
+            <ul style="list-style: none; padding: 0;">
+                <li><strong>Compliance Email:</strong> support@anopcharikpatratopics.in</li>
+                <li><strong>Registered Address:</strong> Plot 45, Sector 12, New Delhi, India</li>
+            </ul>
+
             <h2>Consent</h2>
             <p>By using our website, you hereby consent to our Privacy Policy and agree to its Terms and Conditions.</p>
         </div>

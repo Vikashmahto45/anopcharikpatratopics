@@ -41,6 +41,78 @@ $current_seo = get_seo_data($pdo, $current_filename);
 
     <link rel="stylesheet" href="<?php echo url('css/style.css'); ?>">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+
+    <!-- JSON-LD Structured Data (AdSense E-E-A-T Compliance) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "<?php echo url('#organization'); ?>",
+          "name": "Literature Academy",
+          "url": "<?php echo url(); ?>",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "<?php echo url('img/logo.png'); ?>"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Plot 45, Sector 12",
+            "addressLocality": "New Delhi",
+            "addressCountry": "IN"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "<?php echo url('#website'); ?>",
+          "url": "<?php echo url(); ?>",
+          "name": "Patra Topics: Literature Academy Hub",
+          "publisher": {"@id": "<?php echo url('#organization'); ?>"}
+        },
+        {
+          "@type": "Person",
+          "@id": "<?php echo url('#vikash'); ?>",
+          "name": "Vikash Mahto",
+          "url": "<?php echo url('about.php'); ?>",
+          "description": "Lead Content Architect & Senior Pedagogue with 15+ years experience in secondary education.",
+          "jobTitle": "Lead Pedagogue"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "<?php echo url(); ?>"
+            }
+            <?php if ($current_filename !== 'index.php'): ?>
+                ,{
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "<?php echo htmlspecialchars($current_seo['meta_title']); ?>",
+                  "item": "<?php echo url($current_filename); ?>"
+                }
+            <?php endif; ?>
+          ]
+        }
+        <?php if (strpos($current_filename, '-summary.php') !== false || strpos($current_filename, 'patra-') !== false): ?>
+            ,{
+              "@type": "Article",
+              "headline": "<?php echo htmlspecialchars($current_seo['meta_title']); ?>",
+              "description": "<?php echo htmlspecialchars($current_seo['meta_description']); ?>",
+              "author": {"@id": "<?php echo url('#vikash'); ?>"},
+              "publisher": {"@id": "<?php echo url('#organization'); ?>"},
+              "datePublished": "2026-04-11",
+              "dateModified": "<?php echo date('Y-m-d'); ?>",
+              "mainEntityOfPage": {"@id": "<?php echo url($current_filename); ?>"}
+            }
+        <?php endif; ?>
+      ]
+    }
+    </script>
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5732057974916980"
         crossorigin="anonymous"></script>
 </head>
