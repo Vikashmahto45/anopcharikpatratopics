@@ -21,7 +21,7 @@
             <div class="footer-col">
                 <h4>Legal</h4>
                 <ul>
-                    <li><a href="<?php echo url('about.php'); ?>">About Us</a></li>
+                    <li><a href="<?php echo url('about-us.php'); ?>">About Us</a></li>
                     <li><a href="<?php echo url('contact.php'); ?>">Contact Us</a></li>
                     <li><a href="<?php echo url('privacy-policy.php'); ?>">Privacy Policy</a></li>
                     <li><a href="<?php echo url('disclaimer.php'); ?>">Disclaimer</a></li>
