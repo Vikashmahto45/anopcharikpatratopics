@@ -213,10 +213,7 @@
                 Directory</a>
         </div>
 
-    </div>
-
-    
-        <div class="content-card pedagogical-footer" style="background: #fdf2f2; border-color: #fecaca; margin-top: 50px;">
+    <div class="content-card pedagogical-footer" style="background: #fdf2f2; border-color: #fecaca; margin-top: 50px;">
             <h2 class="sub-header" style="color: #991b1b; border-bottom-color: #fee2e2;">Board Exam Preparation Tips: Ab Kahan Doosre Ke Dukh Mein Dukhi Hone Wale</h2>
             <div class="content-block">
                 <p>To excel in the CBSE Board examinations for <strong>Ab Kahan Doosre Ke Dukh Mein Dukhi Hone Wale</strong>, students should focus on the following key areas:</p>
@@ -256,6 +253,7 @@
                 </div>
             </div>
         </div>
+    </div>
     <?php include('includes/footer.php'); ?>
 
 </body>

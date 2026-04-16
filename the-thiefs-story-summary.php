@@ -174,9 +174,6 @@
                 Index</a>
         </div>
 
-    </div>
-
-
     <div class="content-card pedagogical-footer" style="background: #fdf2f2; border-color: #fecaca; margin-top: 50px;">
         <h2 class="sub-header" style="color: #991b1b; border-bottom-color: #fee2e2;">Board Exam Preparation Tips: The
             Thiefs Story</h2>
@@ -240,6 +237,7 @@
                     pedagogical frameworks for CBSE and ICSE boards.</p>
             </div>
         </div>
+    </div>
     </div>
     <?php include('includes/footer.php'); ?>
 

@@ -198,10 +198,7 @@
             <a href="index.php" class="sub-header" style="text-decoration: none; font-size: 1.1rem; border: none;">← Back to Academy Home</a>
         </div>
 
-    </div>
-
-    
-        <div class="content-card pedagogical-footer" style="background: #fdf2f2; border-color: #fecaca; margin-top: 50px;">
+    <div class="content-card pedagogical-footer" style="background: #fdf2f2; border-color: #fecaca; margin-top: 50px;">
             <h2 class="sub-header" style="color: #991b1b; border-bottom-color: #fee2e2;">Board Exam Preparation Tips: A Letter To God</h2>
             <div class="content-block">
                 <p>To excel in the CBSE Board examinations for <strong>A Letter To God</strong>, students should focus on the following key areas:</p>
@@ -241,6 +238,7 @@
                 </div>
             </div>
         </div>
+    </div>
     <?php include('includes/footer.php'); ?>
 
 </body>
