@@ -262,7 +262,7 @@ require_once __DIR__ . '/includes/header.php';
 <section class="hero-redesign">
     <div class="hero-content">
         <h1 class="hero-title-main">Master the Art of Anopcharik Patra Topics</h1>
-        <p class="hero-subtitle">The definitive, highest-quality educational resource for CBSE, ICSE, and State Board
+        <p class="hero-subtitle"><strong>Anopcharik Patra Topics</strong> is the definitive, highest-quality educational resource for CBSE, ICSE, and State Board
             Hindi grammar. We provide 34 deeply researched, 1000+ word execution guides to guarantee perfect marks in
             the writing section.</p>
         <div class="cta-group">
@@ -432,11 +432,11 @@ require_once __DIR__ . '/includes/header.php';
 <div class="ultimate-guide-container">
     <!-- SECTION 1: THE FOUNDATION -->
     <section id="foundation" class="section-anchor">
-        <h2 style="font-size: 2.5rem; color: var(--brand-dark); margin-bottom: 30px;">अनौपचारिक पत्र लेखन: एक संपूर्ण
-            परिचय (The Foundation)</h3>
+        <h2 style="font-size: 2.5rem; color: var(--brand-dark); margin-bottom: 30px;">Anopcharik Patra Topics: एक संपूर्ण
+            परिचय (The Foundation)</h2>
 
             <div class="article-body">
-                <p><strong>Anopcharik Patra</strong> (Informal Letter) is the cornerstone of Hindi grammar. It
+                <p>Welcome to <strong>Anopcharik Patra Topics</strong>. <strong>Anopcharik Patra</strong> (Informal Letter) is the cornerstone of Hindi grammar. It
                     represents the emotional connection between individuals—friends, family, and close relatives. Unlike
                     formal correspondence, these letters do not require a 'subject' line but demand a high degree of
                     emotional sensitivity and linguistic intimacy.</p>
