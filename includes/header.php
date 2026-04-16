@@ -74,7 +74,7 @@ $current_seo = get_seo_data($pdo, $current_filename);
           "@type": "Person",
           "@id": "<?php echo url('#vikash'); ?>",
           "name": "Vikash Mahto",
-          "url": "<?php echo url('about.php'); ?>",
+          "url": "<?php echo url('about-us.php'); ?>",
           "description": "Lead Content Architect & Senior Pedagogue with 15+ years experience in secondary education.",
           "jobTitle": "Lead Pedagogue"
         },
